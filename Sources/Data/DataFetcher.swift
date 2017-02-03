@@ -11,10 +11,12 @@ import CoreData
 
 /// Data fetcher. Used to fetch stuff from the context.
 struct DataFetcher <DataType: NSFetchRequestResult> {
-    let context: NSManagedObjectContext
+    fileprivate weak var context: NSManagedObjectContext!
     var sortDescriptors: [NSSortDescriptor]?
     var predicate: NSPredicate?
     
+    /// - parameters:
+    ///     - context: Managed context to use for data operations
     init(context: NSManagedObjectContext) {
         self.context = context
     }

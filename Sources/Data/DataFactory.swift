@@ -11,7 +11,7 @@ import CoreData
 
 /// Instantiates a given data type by using a provided context.
 struct DataFactory<DataType: NSManagedObject> {
-    let context: NSManagedObjectContext
+    fileprivate weak var context: NSManagedObjectContext!
     
     /// Initializes the factory by providing a proper context to it to operate.
     init(context: NSManagedObjectContext) {
