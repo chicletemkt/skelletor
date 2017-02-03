@@ -10,16 +10,16 @@ import Foundation
 import CoreData
 
 /// Instantiates a given data type by using a provided context.
-struct DataFactory<DataType: NSManagedObject> {
-    fileprivate weak var context: NSManagedObjectContext!
+public struct DataFactory<DataType: NSManagedObject> {
+    weak var context: NSManagedObjectContext!
     
     /// Initializes the factory by providing a proper context to it to operate.
-    init(context: NSManagedObjectContext) {
+    public init(context: NSManagedObjectContext) {
         self.context = context
     }
     
     /// Instantiates a new instance of the provided data type.
-    func instantiate() -> DataType {
+    public func instantiate() -> DataType {
         var instance: DataType!
         context.performAndWait {
             // Ensures that the operation will happen on the same context's run loop to avoid concurrency problems.
@@ -37,7 +37,7 @@ struct DataFactory<DataType: NSManagedObject> {
     /// - returns:
     ///     - A list of found data
     ///     - An empty array if no data was found using the provided criteria.
-    func fetch(using predicate: NSPredicate? = nil, sortingBy sortdescriptors: [NSSortDescriptor]? = nil) -> [DataType] {
+    public func fetch(using predicate: NSPredicate? = nil, sortingBy sortdescriptors: [NSSortDescriptor]? = nil) -> [DataType] {
         var fetcher = DataFetcher<DataType>(context: self.context)
         fetcher.predicate = predicate
         fetcher.sortDescriptors = sortdescriptors

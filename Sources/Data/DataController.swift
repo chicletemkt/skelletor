@@ -21,12 +21,17 @@ enum DataControllerError : Error {
 
 /// Data model for this app. This is a façade which maintains all related data operations encapsulated into a single
 /// interface. It holds, basically, all boiler plate code for Core Data.
-class DataController {
+public class DataController {
     /// Managed object context. Access point to Core Data stack
-    let context: NSManagedObjectContext
+    public let context: NSManagedObjectContext
+
+    /// Check if the context have any registered change on it
+    public var hasChanges : Bool {
+        return context.hasChanges
+    }
     
     /// Initializes the whole core data stack, preparing the data access to be ready to use.
-    init(dataModel: String, dataFile: String) throws {
+    public init(dataModel: String, dataFile: String) throws {
         guard let modelURL = Bundle.main.url(forResource: dataModel, withExtension: "momd") else {
             throw DataControllerError.CantFindModel
         }
@@ -55,7 +60,8 @@ class DataController {
     /// - returns:
     ///     - true, if the operation completed successfully
     ///     - false, on failure
-    @discardableResult func save() -> Bool {
+    @discardableResult
+    public func save() -> Bool {
         var result = true
         if self.context.hasChanges {
             self.context.performAndWait {
