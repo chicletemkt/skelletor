@@ -15,6 +15,8 @@ enum DataControllerError : Error {
     case CantFindModel
     /// Model is corrupted and can't be loaded into memory
     case CantLoadModel
+    /// Could not add the store to the store coordinator
+    case CantAddPersistentStore
 }
 
 /// Data model for this app. This is a façade which maintains all related data operations encapsulated into a single
@@ -34,12 +36,18 @@ class DataController {
         let storeCoordinator = NSPersistentStoreCoordinator(managedObjectModel: model)
         context = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
         context.persistentStoreCoordinator = storeCoordinator
-        OperationQueue.main.addOperation {
+        var errorAddingStore = false
+        context.performAndWait {
             let urls = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask)
             let storeURL = urls[urls.endIndex-1].appendingPathComponent(dataFile + ".database")
             do {
                 try storeCoordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: storeURL, options: nil)
-            } catch { }
+            } catch {
+                errorAddingStore = true
+            }
+        }
+        if errorAddingStore {
+            throw DataControllerError.CantAddPersistentStore
         }
     }
     
