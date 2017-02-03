@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "07292E0E64E92A81276A6767317864511F38BB2F",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "B4E722CE5538FFC6BD8CAB86DFA1418C6F9F4790" : 9223372036854775807,
+    "07292E0E64E92A81276A6767317864511F38BB2F" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "3E0010B7-93CC-4A6A-82B1-7B0284451EC2",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "B4E722CE5538FFC6BD8CAB86DFA1418C6F9F4790" : "..",
+    "07292E0E64E92A81276A6767317864511F38BB2F" : "skelletor\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Skelletor",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Skelletor.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "bitbucket.org:nineteen-labs\/skelletor.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "07292E0E64E92A81276A6767317864511F38BB2F"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/bitbucket.org\/nineteen-labs\/medicine-time-ios-app.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B4E722CE5538FFC6BD8CAB86DFA1418C6F9F4790"
+    }
+  ]
+}

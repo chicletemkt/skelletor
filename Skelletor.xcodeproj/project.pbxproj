@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D134913B1E453A980074ECFD /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D134913A1E453A980074ECFD /* Environment.swift */; };
+		D134913D1E453E280074ECFD /* EnvironmentFriendly.swift in Sources */ = {isa = PBXBuildFile; fileRef = D134913C1E453E280074ECFD /* EnvironmentFriendly.swift */; };
+		D134913F1E453E620074ECFD /* EnvironmentInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = D134913E1E453E620074ECFD /* EnvironmentInjector.swift */; };
 		D16DA72D1E44B9EE004219DC /* Skelletor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D16DA7231E44B9ED004219DC /* Skelletor.framework */; };
 		D16DA7321E44B9EE004219DC /* SkelletorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16DA7311E44B9EE004219DC /* SkelletorTests.swift */; };
 		D16DA7341E44B9EE004219DC /* Skelletor.h in Headers */ = {isa = PBXBuildFile; fileRef = D16DA7261E44B9ED004219DC /* Skelletor.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -27,6 +30,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D134913A1E453A980074ECFD /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		D134913C1E453E280074ECFD /* EnvironmentFriendly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnvironmentFriendly.swift; sourceTree = "<group>"; };
+		D134913E1E453E620074ECFD /* EnvironmentInjector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnvironmentInjector.swift; sourceTree = "<group>"; };
 		D16DA7231E44B9ED004219DC /* Skelletor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Skelletor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D16DA7261E44B9ED004219DC /* Skelletor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Skelletor.h; sourceTree = "<group>"; };
 		D16DA7271E44B9ED004219DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -59,6 +65,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D13491391E453A870074ECFD /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				D134913A1E453A980074ECFD /* Environment.swift */,
+				D134913C1E453E280074ECFD /* EnvironmentFriendly.swift */,
+				D134913E1E453E620074ECFD /* EnvironmentInjector.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		D16DA7191E44B9ED004219DC = {
 			isa = PBXGroup;
 			children = (
@@ -100,6 +116,7 @@
 		D1E31E751E44BB1A00C04D16 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				D13491391E453A870074ECFD /* Util */,
 				D1E31E761E44BB1A00C04D16 /* Data */,
 			);
 			path = Sources;
@@ -236,7 +253,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D134913D1E453E280074ECFD /* EnvironmentFriendly.swift in Sources */,
+				D134913F1E453E620074ECFD /* EnvironmentInjector.swift in Sources */,
 				D1E31E801E44BDD000C04D16 /* DataFetcher.swift in Sources */,
+				D134913B1E453A980074ECFD /* Environment.swift in Sources */,
 				D1E31E7E1E44BCD300C04D16 /* DataFactory.swift in Sources */,
 				D1E31E781E44BB4000C04D16 /* DataController.swift in Sources */,
 			);
