@@ -13,6 +13,7 @@
 		D16DA72D1E44B9EE004219DC /* Skelletor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D16DA7231E44B9ED004219DC /* Skelletor.framework */; };
 		D16DA7321E44B9EE004219DC /* SkelletorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16DA7311E44B9EE004219DC /* SkelletorTests.swift */; };
 		D16DA7341E44B9EE004219DC /* Skelletor.h in Headers */ = {isa = PBXBuildFile; fileRef = D16DA7261E44B9ED004219DC /* Skelletor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D1B81DAC1E460F660020B476 /* BundleVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B81DAB1E460F660020B476 /* BundleVersion.swift */; };
 		D1E31E781E44BB4000C04D16 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E31E771E44BB4000C04D16 /* DataController.swift */; };
 		D1E31E7B1E44BB7000C04D16 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1E31E7A1E44BB7000C04D16 /* CoreData.framework */; };
 		D1E31E7E1E44BCD300C04D16 /* DataFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E31E7D1E44BCD300C04D16 /* DataFactory.swift */; };
@@ -39,6 +40,7 @@
 		D16DA72C1E44B9EE004219DC /* SkelletorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SkelletorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D16DA7311E44B9EE004219DC /* SkelletorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkelletorTests.swift; sourceTree = "<group>"; };
 		D16DA7331E44B9EE004219DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D1B81DAB1E460F660020B476 /* BundleVersion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BundleVersion.swift; sourceTree = "<group>"; };
 		D1E31E771E44BB4000C04D16 /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		D1E31E7A1E44BB7000C04D16 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		D1E31E7D1E44BCD300C04D16 /* DataFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataFactory.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 				D134913A1E453A980074ECFD /* Environment.swift */,
 				D134913C1E453E280074ECFD /* EnvironmentFriendly.swift */,
 				D134913E1E453E620074ECFD /* EnvironmentInjector.swift */,
+				D1B81DAB1E460F660020B476 /* BundleVersion.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -253,6 +256,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1B81DAC1E460F660020B476 /* BundleVersion.swift in Sources */,
 				D134913D1E453E280074ECFD /* EnvironmentFriendly.swift in Sources */,
 				D134913F1E453E620074ECFD /* EnvironmentInjector.swift in Sources */,
 				D1E31E801E44BDD000C04D16 /* DataFetcher.swift in Sources */,
