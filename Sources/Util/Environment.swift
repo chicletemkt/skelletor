@@ -13,6 +13,8 @@ import Foundation
 public class Environment {
     var storage : [String:Any?] = [:]
     
+    public init(){}
+    
     /// Sets a given key's value into the environment store
     public func set(key: String, value: Any?) -> Self {
         storage[key] = value
@@ -29,5 +31,19 @@ public class Environment {
             value = gotValue
         }
         return self
+    }
+    
+    /// Subscript for subscripting data
+    public subscript(index: String) -> Any? {
+        get {
+            let value = storage[index]
+            guard value != nil else {
+                return nil
+            }
+            return value as Any
+        }
+        set(newValue) {
+            storage[index] = newValue
+        }
     }
 }
