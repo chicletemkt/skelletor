@@ -15,7 +15,7 @@ public struct BundleVersion {
         return version.components(separatedBy: ".")
     }
     
-    public init(with bundle: Bundle) {
+    public init(with bundle: Bundle = Bundle.main) {
         self.bundle = bundle
         if let dict = bundle.infoDictionary {
             version = "\(dict["CFBundleShortVersionString"]!).\(dict["CFBundleVersion"]!)"
