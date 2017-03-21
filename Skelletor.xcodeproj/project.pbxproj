@@ -122,7 +122,8 @@
 				D13491391E453A870074ECFD /* Util */,
 				D1E31E761E44BB1A00C04D16 /* Data */,
 			);
-			path = Sources;
+			name = Sources;
+			path = Sources/Skelletor;
 			sourceTree = SOURCE_ROOT;
 		};
 		D1E31E761E44BB1A00C04D16 /* Data */ = {
