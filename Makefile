@@ -8,7 +8,7 @@ DEPS=${MODULES:%=Modules/%}
 
 deps: 
 	git submodule init $(DEPS)
-	git submodule update $(DEPS)
+	git submodule update --remote $(DEPS)
 
-dep-deinit:
+deps-deinit:
 	git submodule deinit --all
