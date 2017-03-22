@@ -35,8 +35,8 @@
 		D134913C1E453E280074ECFD /* EnvironmentFriendly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnvironmentFriendly.swift; sourceTree = "<group>"; };
 		D134913E1E453E620074ECFD /* EnvironmentInjector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnvironmentInjector.swift; sourceTree = "<group>"; };
 		D16DA7231E44B9ED004219DC /* Skelletor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Skelletor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D16DA7261E44B9ED004219DC /* Skelletor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Skelletor.h; path = Sources/Skelletor/Skelletor.h; sourceTree = "<group>"; };
-		D16DA7271E44B9ED004219DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = Sources/Skelletor/Info.plist; sourceTree = "<group>"; };
+		D16DA7261E44B9ED004219DC /* Skelletor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Skelletor.h; path = Skelletor.h; sourceTree = "<group>"; };
+		D16DA7271E44B9ED004219DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = Info.plist; sourceTree = "<group>"; };
 		D16DA72C1E44B9EE004219DC /* SkelletorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SkelletorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D16DA7311E44B9EE004219DC /* SkelletorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkelletorTests.swift; sourceTree = "<group>"; };
 		D16DA7331E44B9EE004219DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -117,19 +117,6 @@
 			path = SkelletorTests;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
-=======
-		D1E31E751E44BB1A00C04D16 /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				D13491391E453A870074ECFD /* Util */,
-				D1E31E761E44BB1A00C04D16 /* Data */,
-			);
-			name = Sources;
-			path = Sources/Skelletor;
-			sourceTree = SOURCE_ROOT;
-		};
->>>>>>> f6058b904a17ac5d4d553ec02f34b423d7158703
 		D1E31E761E44BB1A00C04D16 /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -399,7 +386,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "$(SRCROOT)/Sources/Skelletor/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Skelletor/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nineteenapps.Skelletor;
@@ -420,7 +407,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "$(SRCROOT)/Sources/Skelletor/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Skelletor/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nineteenapps.Skelletor;
