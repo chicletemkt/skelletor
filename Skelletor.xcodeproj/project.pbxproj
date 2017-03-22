@@ -100,7 +100,8 @@
 		D16DA7251E44B9ED004219DC /* Skelletor */ = {
 			isa = PBXGroup;
 			children = (
-				D1E31E751E44BB1A00C04D16 /* Sources */,
+				D13491391E453A870074ECFD /* Util */,
+				D1E31E761E44BB1A00C04D16 /* Data */,
 				D16DA7261E44B9ED004219DC /* Skelletor.h */,
 				D16DA7271E44B9ED004219DC /* Info.plist */,
 			);
@@ -115,15 +116,6 @@
 			);
 			path = SkelletorTests;
 			sourceTree = "<group>";
-		};
-		D1E31E751E44BB1A00C04D16 /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				D13491391E453A870074ECFD /* Util */,
-				D1E31E761E44BB1A00C04D16 /* Data */,
-			);
-			path = Sources;
-			sourceTree = SOURCE_ROOT;
 		};
 		D1E31E761E44BB1A00C04D16 /* Data */ = {
 			isa = PBXGroup;
