@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D10B47FE1E829CD600DE9D1B /* FeedKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D10B47EB1E829CB600DE9D1B /* FeedKit.framework */; };
+		D116A4E61E83575D0063FF18 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D116A4E51E83575D0063FF18 /* FeedViewController.swift */; };
 		D134913B1E453A980074ECFD /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D134913A1E453A980074ECFD /* Environment.swift */; };
 		D134913D1E453E280074ECFD /* EnvironmentFriendly.swift in Sources */ = {isa = PBXBuildFile; fileRef = D134913C1E453E280074ECFD /* EnvironmentFriendly.swift */; };
 		D134913F1E453E620074ECFD /* EnvironmentInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = D134913E1E453E620074ECFD /* EnvironmentInjector.swift */; };
@@ -103,6 +104,7 @@
 
 /* Begin PBXFileReference section */
 		D10B47DD1E829CB600DE9D1B /* FeedKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FeedKit.xcodeproj; path = FeedKit/FeedKit.xcodeproj; sourceTree = "<group>"; };
+		D116A4E51E83575D0063FF18 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		D134913A1E453A980074ECFD /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		D134913C1E453E280074ECFD /* EnvironmentFriendly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnvironmentFriendly.swift; sourceTree = "<group>"; };
 		D134913E1E453E620074ECFD /* EnvironmentInjector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnvironmentInjector.swift; sourceTree = "<group>"; };
@@ -165,6 +167,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		D116A4E41E8357420063FF18 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				D116A4E51E83575D0063FF18 /* FeedViewController.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		D13491391E453A870074ECFD /* Util */ = {
 			isa = PBXGroup;
 			children = (
@@ -199,6 +209,7 @@
 		D16DA7251E44B9ED004219DC /* Skelletor */ = {
 			isa = PBXGroup;
 			children = (
+				D116A4E41E8357420063FF18 /* UI */,
 				D13491391E453A870074ECFD /* Util */,
 				D1E31E761E44BB1A00C04D16 /* Data */,
 				D16DA7261E44B9ED004219DC /* Skelletor.h */,
@@ -433,6 +444,7 @@
 				D1E31E801E44BDD000C04D16 /* DataFetcher.swift in Sources */,
 				D134913B1E453A980074ECFD /* Environment.swift in Sources */,
 				D1E31E7E1E44BCD300C04D16 /* DataFactory.swift in Sources */,
+				D116A4E61E83575D0063FF18 /* FeedViewController.swift in Sources */,
 				D1E31E781E44BB4000C04D16 /* DataController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
