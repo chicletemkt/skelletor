@@ -23,17 +23,21 @@ public class FeedViewController: UITableViewController {
                 feed = FeedParser(URL: url)
             }
         }
-        feed?.parse({ [unowned self] (result) in
-            switch result {
-            case .rss(let feed):
-                self.viewData.rss = feed.items
-            case .atom(let feed):
-                self.viewData.atom = feed.entries
-            case .failure:
-                break
-            }
-            self.tableView.reloadData()
-        })
+        DispatchQueue.global(qos: .userInitiated).async { [unowned self] () in
+            self.feed?.parse({ [unowned self] (result) in
+                switch result {
+                case .rss(let feed):
+                    self.viewData.rss = feed.items
+                case .atom(let feed):
+                    self.viewData.atom = feed.entries
+                case .failure:
+                    break
+                }
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            })
+        }
     }
 
     override public func didReceiveMemoryWarning() {
