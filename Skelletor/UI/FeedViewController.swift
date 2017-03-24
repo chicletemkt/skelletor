@@ -8,11 +8,11 @@
 
 import UIKit
 
-public class FeedViewController: UITableViewController {
-    @IBInspectable var cellId: String! = "FeedCell"
-    @IBInspectable var feedPath: String!
-    @IBInspectable var cacheFileName: String! = "itunesFeedCache"
-    @IBInspectable var sectionTitle: String!
+open class FeedViewController: UITableViewController {
+    @IBInspectable public var cellId: String! = "FeedCell"
+    @IBInspectable public var feedPath: String!
+    @IBInspectable public var cacheFileName: String! = "itunesFeedCache"
+    @IBInspectable public var sectionTitle: String!
 
     var feedReader: iTunesFeedReader!
     var feedItems: [iTunesModel] = []
@@ -20,7 +20,7 @@ public class FeedViewController: UITableViewController {
     let memoryCacheCapacity = 52428800  // 50M
     let diskCacheCapacity   = 262144000 // 250M
     
-    override public func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         if feedPath != nil  {
             if let url = URL(string: feedPath) {
@@ -55,20 +55,20 @@ public class FeedViewController: UITableViewController {
         urlSession = URLSession(configuration: urlSessionConfig)
     }
 
-    override public func didReceiveMemoryWarning() {
+    override open func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
 
     // MARK: - Table view data source
-    override public func numberOfSections(in tableView: UITableView) -> Int {
+    override open func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return feedItems.count
     }
 
-    override public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
         let itunesItem = feedItems[indexPath.row]
         cell.textLabel?.text = itunesItem.name
@@ -79,12 +79,12 @@ public class FeedViewController: UITableViewController {
         return cell
     }
     
-    public override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override open func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sectionTitle
     }
     
     // MARK: - Table View Delegate
-    public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let itunesItem = feedItems[indexPath.row]
         if let link = itunesItem.link {
             if UIApplication.shared.canOpenURL(link) {
