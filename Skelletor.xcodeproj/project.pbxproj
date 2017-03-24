@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D10B47FE1E829CD600DE9D1B /* FeedKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D10B47EB1E829CB600DE9D1B /* FeedKit.framework */; };
 		D116A4E61E83575D0063FF18 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D116A4E51E83575D0063FF18 /* FeedViewController.swift */; };
 		D134913B1E453A980074ECFD /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D134913A1E453A980074ECFD /* Environment.swift */; };
 		D134913D1E453E280074ECFD /* EnvironmentFriendly.swift in Sources */ = {isa = PBXBuildFile; fileRef = D134913C1E453E280074ECFD /* EnvironmentFriendly.swift */; };
@@ -15,6 +14,8 @@
 		D16DA72D1E44B9EE004219DC /* Skelletor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D16DA7231E44B9ED004219DC /* Skelletor.framework */; };
 		D16DA7321E44B9EE004219DC /* SkelletorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16DA7311E44B9EE004219DC /* SkelletorTests.swift */; };
 		D16DA7341E44B9EE004219DC /* Skelletor.h in Headers */ = {isa = PBXBuildFile; fileRef = D16DA7261E44B9ED004219DC /* Skelletor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D1828ADD1E83F7CE00246847 /* iTunesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1828ADC1E83F7CE00246847 /* iTunesModel.swift */; };
+		D1828ADF1E840CEF00246847 /* iTunesFeedReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1828ADE1E840CEF00246847 /* iTunesFeedReader.swift */; };
 		D1B81DAC1E460F660020B476 /* BundleVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B81DAB1E460F660020B476 /* BundleVersion.swift */; };
 		D1E31E781E44BB4000C04D16 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E31E771E44BB4000C04D16 /* DataController.swift */; };
 		D1E31E7B1E44BB7000C04D16 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1E31E7A1E44BB7000C04D16 /* CoreData.framework */; };
@@ -23,76 +24,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		D10B47EA1E829CB600DE9D1B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D10B47DD1E829CB600DE9D1B /* FeedKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = A0EF4E0C1CE86D1E00C52142;
-			remoteInfo = "FeedKit iOS";
-		};
-		D10B47EC1E829CB600DE9D1B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D10B47DD1E829CB600DE9D1B /* FeedKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = A0EF4DE81CE86C3800C52142;
-			remoteInfo = "FeedKit tvOS";
-		};
-		D10B47EE1E829CB600DE9D1B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D10B47DD1E829CB600DE9D1B /* FeedKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = A0EF4DFA1CE86CA200C52142;
-			remoteInfo = "FeedKit macOS";
-		};
-		D10B47F01E829CB600DE9D1B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D10B47DD1E829CB600DE9D1B /* FeedKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = A0370EB91CEF9D5A009583A3;
-			remoteInfo = "FeedKit watchOS";
-		};
-		D10B47F21E829CB600DE9D1B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D10B47DD1E829CB600DE9D1B /* FeedKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = A0EF4DAC1CE869AD00C52142;
-			remoteInfo = "FeedKit Example iOS";
-		};
-		D10B47F41E829CB600DE9D1B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D10B47DD1E829CB600DE9D1B /* FeedKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = A0EF4DC21CE86A0600C52142;
-			remoteInfo = "FeedKit Example tvOS";
-		};
-		D10B47F61E829CB600DE9D1B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D10B47DD1E829CB600DE9D1B /* FeedKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = A0EF4DD51CE86A7700C52142;
-			remoteInfo = "FeedKit Example macOS";
-		};
-		D10B47F81E829CB600DE9D1B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D10B47DD1E829CB600DE9D1B /* FeedKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = A09C84FE1CE9AE2300D20CAB;
-			remoteInfo = "FeedKit iOS Tests";
-		};
-		D10B47FA1E829CB600DE9D1B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D10B47DD1E829CB600DE9D1B /* FeedKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = A09C850D1CE9AE4F00D20CAB;
-			remoteInfo = "FeedKit tvOS Tests";
-		};
-		D10B47FC1E829CB600DE9D1B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D10B47DD1E829CB600DE9D1B /* FeedKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = A09C851C1CE9AE6A00D20CAB;
-			remoteInfo = "FeedKit macOS Tests";
-		};
 		D16DA72E1E44B9EE004219DC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D16DA71A1E44B9ED004219DC /* Project object */;
@@ -103,7 +34,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		D10B47DD1E829CB600DE9D1B /* FeedKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FeedKit.xcodeproj; path = FeedKit/FeedKit.xcodeproj; sourceTree = "<group>"; };
 		D116A4E51E83575D0063FF18 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		D134913A1E453A980074ECFD /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		D134913C1E453E280074ECFD /* EnvironmentFriendly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnvironmentFriendly.swift; sourceTree = "<group>"; };
@@ -114,6 +44,8 @@
 		D16DA72C1E44B9EE004219DC /* SkelletorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SkelletorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D16DA7311E44B9EE004219DC /* SkelletorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkelletorTests.swift; sourceTree = "<group>"; };
 		D16DA7331E44B9EE004219DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D1828ADC1E83F7CE00246847 /* iTunesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iTunesModel.swift; sourceTree = "<group>"; };
+		D1828ADE1E840CEF00246847 /* iTunesFeedReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iTunesFeedReader.swift; sourceTree = "<group>"; };
 		D1B81DAB1E460F660020B476 /* BundleVersion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BundleVersion.swift; sourceTree = "<group>"; };
 		D1E31E771E44BB4000C04D16 /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		D1E31E7A1E44BB7000C04D16 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -126,7 +58,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D10B47FE1E829CD600DE9D1B /* FeedKit.framework in Frameworks */,
 				D1E31E7B1E44BB7000C04D16 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -142,31 +73,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D10B46E11E829C9E00DE9D1B /* Modules */ = {
-			isa = PBXGroup;
-			children = (
-				D10B47DD1E829CB600DE9D1B /* FeedKit.xcodeproj */,
-			);
-			path = Modules;
-			sourceTree = "<group>";
-		};
-		D10B47DE1E829CB600DE9D1B /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				D10B47EB1E829CB600DE9D1B /* FeedKit.framework */,
-				D10B47ED1E829CB600DE9D1B /* FeedKit.framework */,
-				D10B47EF1E829CB600DE9D1B /* FeedKit.framework */,
-				D10B47F11E829CB600DE9D1B /* FeedKit.framework */,
-				D10B47F31E829CB600DE9D1B /* FeedKit Example iOS.app */,
-				D10B47F51E829CB600DE9D1B /* FeedKit Example tvOS.app */,
-				D10B47F71E829CB600DE9D1B /* FeedKit Example macOS.app */,
-				D10B47F91E829CB600DE9D1B /* FeedKit iOS Tests.xctest */,
-				D10B47FB1E829CB600DE9D1B /* FeedKit tvOS Tests.xctest */,
-				D10B47FD1E829CB600DE9D1B /* FeedKit macOS Tests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		D116A4E41E8357420063FF18 /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -189,7 +95,6 @@
 		D16DA7191E44B9ED004219DC = {
 			isa = PBXGroup;
 			children = (
-				D10B46E11E829C9E00DE9D1B /* Modules */,
 				D16DA7251E44B9ED004219DC /* Skelletor */,
 				D16DA7301E44B9EE004219DC /* SkelletorTests */,
 				D16DA7241E44B9ED004219DC /* Products */,
@@ -209,6 +114,7 @@
 		D16DA7251E44B9ED004219DC /* Skelletor */ = {
 			isa = PBXGroup;
 			children = (
+				D1828ADB1E83F7B500246847 /* iTunes */,
 				D116A4E41E8357420063FF18 /* UI */,
 				D13491391E453A870074ECFD /* Util */,
 				D1E31E761E44BB1A00C04D16 /* Data */,
@@ -225,6 +131,15 @@
 				D16DA7331E44B9EE004219DC /* Info.plist */,
 			);
 			path = SkelletorTests;
+			sourceTree = "<group>";
+		};
+		D1828ADB1E83F7B500246847 /* iTunes */ = {
+			isa = PBXGroup;
+			children = (
+				D1828ADC1E83F7CE00246847 /* iTunesModel.swift */,
+				D1828ADE1E840CEF00246847 /* iTunesFeedReader.swift */,
+			);
+			path = iTunes;
 			sourceTree = "<group>";
 		};
 		D1E31E761E44BB1A00C04D16 /* Data */ = {
@@ -329,12 +244,6 @@
 			mainGroup = D16DA7191E44B9ED004219DC;
 			productRefGroup = D16DA7241E44B9ED004219DC /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = D10B47DE1E829CB600DE9D1B /* Products */;
-					ProjectRef = D10B47DD1E829CB600DE9D1B /* FeedKit.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				D16DA7221E44B9ED004219DC /* Skelletor */,
@@ -342,79 +251,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		D10B47EB1E829CB600DE9D1B /* FeedKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = FeedKit.framework;
-			remoteRef = D10B47EA1E829CB600DE9D1B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D10B47ED1E829CB600DE9D1B /* FeedKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = FeedKit.framework;
-			remoteRef = D10B47EC1E829CB600DE9D1B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D10B47EF1E829CB600DE9D1B /* FeedKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = FeedKit.framework;
-			remoteRef = D10B47EE1E829CB600DE9D1B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D10B47F11E829CB600DE9D1B /* FeedKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = FeedKit.framework;
-			remoteRef = D10B47F01E829CB600DE9D1B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D10B47F31E829CB600DE9D1B /* FeedKit Example iOS.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = "FeedKit Example iOS.app";
-			remoteRef = D10B47F21E829CB600DE9D1B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D10B47F51E829CB600DE9D1B /* FeedKit Example tvOS.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = "FeedKit Example tvOS.app";
-			remoteRef = D10B47F41E829CB600DE9D1B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D10B47F71E829CB600DE9D1B /* FeedKit Example macOS.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = "FeedKit Example macOS.app";
-			remoteRef = D10B47F61E829CB600DE9D1B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D10B47F91E829CB600DE9D1B /* FeedKit iOS Tests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "FeedKit iOS Tests.xctest";
-			remoteRef = D10B47F81E829CB600DE9D1B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D10B47FB1E829CB600DE9D1B /* FeedKit tvOS Tests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "FeedKit tvOS Tests.xctest";
-			remoteRef = D10B47FA1E829CB600DE9D1B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D10B47FD1E829CB600DE9D1B /* FeedKit macOS Tests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "FeedKit macOS Tests.xctest";
-			remoteRef = D10B47FC1E829CB600DE9D1B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D16DA7211E44B9ED004219DC /* Resources */ = {
@@ -443,8 +279,10 @@
 				D134913F1E453E620074ECFD /* EnvironmentInjector.swift in Sources */,
 				D1E31E801E44BDD000C04D16 /* DataFetcher.swift in Sources */,
 				D134913B1E453A980074ECFD /* Environment.swift in Sources */,
+				D1828ADD1E83F7CE00246847 /* iTunesModel.swift in Sources */,
 				D1E31E7E1E44BCD300C04D16 /* DataFactory.swift in Sources */,
 				D116A4E61E83575D0063FF18 /* FeedViewController.swift in Sources */,
+				D1828ADF1E840CEF00246847 /* iTunesFeedReader.swift in Sources */,
 				D1E31E781E44BB4000C04D16 /* DataController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

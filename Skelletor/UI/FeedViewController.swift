@@ -7,36 +7,31 @@
 //
 
 import UIKit
-import FeedKit
 
 public class FeedViewController: UITableViewController {
     @IBInspectable var cellId: String! = "FeedCell"
     @IBInspectable var feedPath: String!
 
-    var feed: FeedParser!
-    var viewData: (rss: [RSSFeedItem]?, atom: [AtomFeedEntry]?) = (rss: nil, atom: nil)
+    var feedReader: iTunesFeedReader!
+    var feedItems: [iTunesModel] = []
     
     override public func viewDidLoad() {
         super.viewDidLoad()
-        if feedPath != nil {
+        if feedPath != nil  {
             if let url = URL(string: feedPath) {
-                feed = FeedParser(URL: url)
+                feedReader = iTunesFeedReader(url: url)
             }
         }
-        DispatchQueue.global(qos: .userInitiated).async { [unowned self] () in
-            self.feed?.parse({ [unowned self] (result) in
+        if feedReader != nil {
+            feedReader.read { (result) in
                 switch result {
-                case .rss(let feed):
-                    self.viewData.rss = feed.items
-                case .atom(let feed):
-                    self.viewData.atom = feed.entries
-                case .failure:
+                case .success(let items):
+                    self.feedItems = items
+                    self.tableView.reloadData()
+                case .error(_):
                     break
                 }
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-            })
+            }
         }
     }
 
@@ -45,31 +40,19 @@ public class FeedViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-
     override public func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
     override public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let items = viewData.rss {
-            return items.count
-        }
-        if let items = viewData.atom {
-            return items.count
-        }
-        return 0
+        return feedItems.count
     }
 
     override public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
-        if let rssItem = viewData.rss?[indexPath.row] {
-            cell.textLabel?.text = rssItem.title
-            cell.detailTextLabel?.text = rssItem.description
-        }
-        if let atomItem = viewData.atom?[indexPath.row] {
-            cell.textLabel?.text = atomItem.title
-            cell.detailTextLabel?.text = atomItem.summary?.value
-        }
+        let itunesItem = feedItems[indexPath.row]
+        cell.textLabel?.text = itunesItem.name
+        cell.detailTextLabel?.text = itunesItem.summary
         return cell
     }
 }

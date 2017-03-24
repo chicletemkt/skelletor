@@ -1,3 +1,0 @@
-[submodule "Modules/FeedKit"]
-	path = Modules/FeedKit
-	url = git@github.com:nmdias/FeedKit.git
