@@ -11,9 +11,13 @@ import UIKit
 public class FeedViewController: UITableViewController {
     @IBInspectable var cellId: String! = "FeedCell"
     @IBInspectable var feedPath: String!
+    @IBInspectable var cacheFileName: String! = "itunesFeedCache"
 
     var feedReader: iTunesFeedReader!
     var feedItems: [iTunesModel] = []
+    var urlCache: URLCache!
+    let memoryCacheCapacity = 52428800  // 50M
+    let diskCacheCapacity   = 262144000 // 250M
     
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +36,14 @@ public class FeedViewController: UITableViewController {
                     break
                 }
             }
+        }
+        do {
+            var diskCacheURLPath = try FileManager.default.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            diskCacheURLPath = diskCacheURLPath.appendingPathComponent(cacheFileName)
+            urlCache = URLCache(memoryCapacity: memoryCacheCapacity, diskCapacity: diskCacheCapacity, diskPath: diskCacheURLPath.path)
+        } catch {
+            // Creates an in-memory small cache
+            urlCache = URLCache(memoryCapacity: memoryCacheCapacity, diskCapacity: 0, diskPath: nil)
         }
     }
 
@@ -54,5 +66,38 @@ public class FeedViewController: UITableViewController {
         cell.textLabel?.text = itunesItem.name
         cell.detailTextLabel?.text = itunesItem.summary
         return cell
+    }
+    
+    // MARK: - Internal Functions
+    func downloadImage(for indexPath: IndexPath, using url: URL) {
+        let request = URLRequest(url: url)
+        if let cachedResponse = urlCache.cachedResponse(for: request) {
+            set(image:  UIImage(data: cachedResponse.data), forVisibleCellAt: indexPath)
+        }
+        else {
+            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                if let _ = error {
+                    // Do nothing. Failed? So what! No image for the item
+                    return
+                }
+                if let response = response, let data = data {
+                    let cachedResponse = CachedURLResponse(response: response, data: data)
+                    self.urlCache.storeCachedResponse(cachedResponse, for: request)
+                    DispatchQueue.main.async {
+                        self.set(image: UIImage(data: data), forVisibleCellAt: indexPath)
+                    }
+                }
+            }
+            task.resume()
+        }
+    }
+    
+    func set(image: UIImage?, forVisibleCellAt indexPath: IndexPath) {
+        if let visibleIndexPaths = tableView.indexPathsForVisibleRows {
+            if visibleIndexPaths.contains(indexPath) {
+                let cell = tableView.cellForRow(at: indexPath)
+                cell?.imageView?.image = image
+            }
+        }
     }
 }
