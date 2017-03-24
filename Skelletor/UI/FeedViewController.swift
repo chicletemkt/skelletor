@@ -65,6 +65,9 @@ public class FeedViewController: UITableViewController {
         let itunesItem = feedItems[indexPath.row]
         cell.textLabel?.text = itunesItem.name
         cell.detailTextLabel?.text = itunesItem.summary
+        if let imageItemURL = itunesItem.images?.last {
+            downloadImage(for: indexPath, using: imageItemURL)
+        }
         return cell
     }
     
