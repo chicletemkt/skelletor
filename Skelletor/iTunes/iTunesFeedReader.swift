@@ -15,17 +15,15 @@ public enum iTunesFeedReaderResult {
 
 public struct iTunesFeedReader {
     let url: URL
-    let session: URLSession
     let resultQueue: DispatchQueue
     
     public init (url: URL, resultQueue: DispatchQueue = DispatchQueue.main) {
         self.url = url
-        session = URLSession()
         self.resultQueue = resultQueue
     }
     
     public func read(using callback: @escaping (_ result: iTunesFeedReaderResult)->()) {
-        session.dataTask(with: url) { (data, response, error) in
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
             if let error = error {
                 return callback(.error(error: error.localizedDescription))
             }
@@ -48,7 +46,7 @@ public struct iTunesFeedReader {
                     callback(.error(error: "Invalid JSON data"))
                 }
             }
-        }
+        }.resume()
     }
     
     func parse(entries: [[String:Any]]) -> [iTunesModel] {
