@@ -58,6 +58,7 @@ public class iTunesModel {
             price?.currency = jsonPrice["currency"]!
             let fmt = NumberFormatter()
             fmt.currencyCode = price?.currency
+            fmt.locale = Locale(identifier: "EN")
             price?.amount = fmt.number(from: jsonPrice["amount"]!)!.doubleValue
         }
         if let jsonArtist = json["im:artist"] as? [String:Any] {

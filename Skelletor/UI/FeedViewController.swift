@@ -12,10 +12,11 @@ public class FeedViewController: UITableViewController {
     @IBInspectable var cellId: String! = "FeedCell"
     @IBInspectable var feedPath: String!
     @IBInspectable var cacheFileName: String! = "itunesFeedCache"
+    @IBInspectable var sectionTitle: String!
 
     var feedReader: iTunesFeedReader!
     var feedItems: [iTunesModel] = []
-    var urlCache: URLCache!
+    var urlSession: URLSession!
     let memoryCacheCapacity = 52428800  // 50M
     let diskCacheCapacity   = 262144000 // 250M
     
@@ -37,6 +38,7 @@ public class FeedViewController: UITableViewController {
                 }
             }
         }
+        var urlCache: URLCache?
         do {
             var diskCacheURLPath = try FileManager.default.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             diskCacheURLPath = diskCacheURLPath.appendingPathComponent(cacheFileName)
@@ -45,6 +47,12 @@ public class FeedViewController: UITableViewController {
             // Creates an in-memory small cache
             urlCache = URLCache(memoryCapacity: memoryCacheCapacity, diskCapacity: 0, diskPath: nil)
         }
+        let urlSessionConfig = URLSessionConfiguration.background(withIdentifier: "iTunes Feed Downloader")
+        urlSessionConfig.urlCache = urlCache
+        if urlCache != nil {
+            urlSessionConfig.requestCachePolicy = .returnCacheDataElseLoad
+        }
+        urlSession = URLSession(configuration: urlSessionConfig)
     }
 
     override public func didReceiveMemoryWarning() {
@@ -65,42 +73,46 @@ public class FeedViewController: UITableViewController {
         let itunesItem = feedItems[indexPath.row]
         cell.textLabel?.text = itunesItem.name
         cell.detailTextLabel?.text = itunesItem.summary
-        if let imageItemURL = itunesItem.images?.last {
-            downloadImage(for: indexPath, using: imageItemURL)
+        if let imageItemURL = itunesItem.images?.first {
+            downloadImage(for: cell, using: imageItemURL)
         }
         return cell
     }
     
-    // MARK: - Internal Functions
-    func downloadImage(for indexPath: IndexPath, using url: URL) {
-        let request = URLRequest(url: url)
-        if let cachedResponse = urlCache.cachedResponse(for: request) {
-            set(image:  UIImage(data: cachedResponse.data), forVisibleCellAt: indexPath)
-        }
-        else {
-            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-                if let _ = error {
-                    // Do nothing. Failed? So what! No image for the item
-                    return
-                }
-                if let response = response, let data = data {
-                    let cachedResponse = CachedURLResponse(response: response, data: data)
-                    self.urlCache.storeCachedResponse(cachedResponse, for: request)
-                    DispatchQueue.main.async {
-                        self.set(image: UIImage(data: data), forVisibleCellAt: indexPath)
-                    }
-                }
+    public override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sectionTitle
+    }
+    
+    // MARK: - Table View Delegate
+    public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let itunesItem = feedItems[indexPath.row]
+        if let link = itunesItem.link {
+            if UIApplication.shared.canOpenURL(link) {
+                UIApplication.shared.open(link, options: [:], completionHandler: nil)
             }
-            task.resume()
         }
     }
     
-    func set(image: UIImage?, forVisibleCellAt indexPath: IndexPath) {
-        if let visibleIndexPaths = tableView.indexPathsForVisibleRows {
-            if visibleIndexPaths.contains(indexPath) {
-                let cell = tableView.cellForRow(at: indexPath)
-                cell?.imageView?.image = image
+    // MARK: - Internal Functions
+    func downloadImage(for cell: UITableViewCell, using url: URL) {
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            if let _ = error {
+                // Do nothing. Failed? So what! No image for the item
+                return
             }
+            if let data = data {
+                DispatchQueue.main.async {
+                    self.set(image: UIImage(data: data), forVisibleCell: cell)
+                }
+            }
+        }
+        task.resume()
+    }
+    
+    func set(image: UIImage?, forVisibleCell cell: UITableViewCell) {
+        if tableView.visibleCells.contains(cell) {
+            cell.imageView?.image = image
+            cell.imageView?.sizeToFit()
         }
     }
 }
