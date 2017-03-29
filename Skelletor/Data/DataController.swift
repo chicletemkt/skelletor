@@ -31,8 +31,8 @@ public class DataController {
     }
     
     /// Initializes the whole core data stack, preparing the data access to be ready to use.
-    public init(dataModel: String, dataFile: String) throws {
-        guard let modelURL = Bundle.main.url(forResource: dataModel, withExtension: "momd") else {
+    public init(dataModel: String, dataFile: String, bundle: Bundle = Bundle.main) throws {
+        guard let modelURL = bundle.url(forResource: dataModel, withExtension: "momd") else {
             throw DataControllerError.CantFindModel
         }
         guard let model = NSManagedObjectModel(contentsOf: modelURL) else {
