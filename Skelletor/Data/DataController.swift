@@ -31,7 +31,7 @@ public class DataController {
     }
     
     /// Initializes the whole core data stack, preparing the data access to be ready to use.
-    public init(dataModel: String, dataFile: String, bundle: Bundle = Bundle.main) throws {
+    public init(dataModel: String, dataFile: String, bundle: Bundle = Bundle.main, group: String? = nil) throws {
         guard let modelURL = bundle.url(forResource: dataModel, withExtension: "momd") else {
             throw DataControllerError.CantFindModel
         }
@@ -43,8 +43,14 @@ public class DataController {
         context.persistentStoreCoordinator = storeCoordinator
         var errorAddingStore = false
         context.performAndWait {
-            let urls = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask)
-            let storeURL = urls[urls.endIndex-1].appendingPathComponent(dataFile + ".database")
+            var storeURL: URL!
+            var fileURL: URL!
+            if let group = group {
+                fileURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: group)
+            } else {
+                fileURL = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask).last
+            }
+            storeURL = fileURL.appendingPathComponent(dataFile + ".database")
             do {
                 try storeCoordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: storeURL, options: nil)
             } catch {
