@@ -22,20 +22,11 @@ open class FeedViewController: UITableViewController {
     
     override open func viewDidLoad() {
         super.viewDidLoad()
+        refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: #selector(valueChanged(sender:)), for: .valueChanged)
         if feedPath != nil  {
             if let url = URL(string: feedPath) {
                 feedReader = iTunesFeedReader(url: url)
-            }
-        }
-        if feedReader != nil {
-            feedReader.read { (result) in
-                switch result {
-                case .success(let items):
-                    self.feedItems = items
-                    self.tableView.reloadData()
-                case .error(_):
-                    break
-                }
             }
         }
         var urlCache: URLCache?
@@ -53,6 +44,7 @@ open class FeedViewController: UITableViewController {
             urlSessionConfig.requestCachePolicy = .returnCacheDataElseLoad
         }
         urlSession = URLSession(configuration: urlSessionConfig)
+        loadData()
     }
 
     override open func didReceiveMemoryWarning() {
@@ -72,7 +64,11 @@ open class FeedViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
         let itunesItem = feedItems[indexPath.row]
         cell.textLabel?.text = itunesItem.name
-        cell.detailTextLabel?.text = itunesItem.summary
+        if let price = itunesItem.price {
+            cell.detailTextLabel?.text = "\(price.currency) \(price.amount)"
+        } else {
+            cell.detailTextLabel?.text = itunesItem.summary
+        }
         if let imageItemURL = itunesItem.images?.first {
             downloadImage(for: cell, using: imageItemURL)
         }
@@ -113,6 +109,30 @@ open class FeedViewController: UITableViewController {
         if tableView.visibleCells.contains(cell) {
             cell.imageView?.image = image
             cell.imageView?.sizeToFit()
+        }
+    }
+    
+    func loadData() {
+        guard feedReader != nil else {
+            return
+        }
+        feedReader.read { (result) in
+            switch result {
+            case .success(let items):
+                self.feedItems = items
+                self.tableView.reloadData()
+            case .error(_):
+                break
+            }
+        }
+    }
+    
+    func valueChanged(sender: Any?) {
+        if let control = sender as? UIRefreshControl {
+            if control.isRefreshing {
+                loadData()
+                control.endRefreshing()
+            }
         }
     }
 }
