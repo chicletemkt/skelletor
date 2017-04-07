@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D116A4E61E83575D0063FF18 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D116A4E51E83575D0063FF18 /* FeedViewController.swift */; };
 		D134913B1E453A980074ECFD /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D134913A1E453A980074ECFD /* Environment.swift */; };
 		D134913D1E453E280074ECFD /* EnvironmentFriendly.swift in Sources */ = {isa = PBXBuildFile; fileRef = D134913C1E453E280074ECFD /* EnvironmentFriendly.swift */; };
 		D134913F1E453E620074ECFD /* EnvironmentInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = D134913E1E453E620074ECFD /* EnvironmentInjector.swift */; };
@@ -281,7 +280,6 @@
 				D134913B1E453A980074ECFD /* Environment.swift in Sources */,
 				D1828ADD1E83F7CE00246847 /* iTunesModel.swift in Sources */,
 				D1E31E7E1E44BCD300C04D16 /* DataFactory.swift in Sources */,
-				D116A4E61E83575D0063FF18 /* FeedViewController.swift in Sources */,
 				D1828ADF1E840CEF00246847 /* iTunesFeedReader.swift in Sources */,
 				D1E31E781E44BB4000C04D16 /* DataController.swift in Sources */,
 			);
