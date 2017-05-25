@@ -24,6 +24,9 @@ public struct DataFetcher <DataType: NSFetchRequestResult> {
         self.context = context
     }
     
+    /// Fetches data based on the criteria provided.
+    ///
+    /// - Returns: An array of the data type.
     public func fetch() -> [DataType] {
         let request = NSFetchRequest<DataType>(entityName: String(describing: DataType.self))
         request.predicate = predicate

@@ -27,21 +27,5 @@ public struct DataFactory<DataType: NSManagedObject> {
         }
         return instance
     }
-    
-    /// Convenience method: Fetches data by using a Data Fetcher.
-    ///
-    /// - parameters:
-    ///     - predicate: Optional. Predicate to use for data filtering.
-    ///     - sortDescriptors: Optional. Sort descriptors for result sorting.
-    ///
-    /// - returns:
-    ///     - A list of found data
-    ///     - An empty array if no data was found using the provided criteria.
-    public func fetch(using predicate: NSPredicate? = nil, sortingBy sortdescriptors: [NSSortDescriptor]? = nil) -> [DataType] {
-        var fetcher = DataFetcher<DataType>(context: self.context)
-        fetcher.predicate = predicate
-        fetcher.sortDescriptors = sortdescriptors
-        return fetcher.fetch()
-    }
 }
 
