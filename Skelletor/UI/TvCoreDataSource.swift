@@ -12,6 +12,7 @@ import CoreData
 
 /// Generic data source for single dimension data
 public final class TvCoreDataSource <DataType: NSFetchRequestResult>: NSObject, UITableViewDataSource {
+    weak var moc: NSManagedObjectContext!
     public typealias CellConfigurator = (UITableViewCell, DataType) -> Void
     public var cellConfigurator: CellConfigurator?
     public var cellId: String!
@@ -31,13 +32,13 @@ public final class TvCoreDataSource <DataType: NSFetchRequestResult>: NSObject, 
             return dataFetcher.sortDescriptors
         }
     }
-    
     var dataFetcher: DataFetcher<DataType>
-    lazy var data: [DataType] = { [weak self] () in
-        return self!.dataFetcher.fetch()
-    }()
+    var data: [DataType] {
+        return self.dataFetcher.fetch()
+    }
     
     public init (using moc: NSManagedObjectContext) {
+        self.moc = moc
         dataFetcher = DataFetcher<DataType>(context: moc)
     }
     
@@ -58,7 +59,14 @@ public final class TvCoreDataSource <DataType: NSFetchRequestResult>: NSObject, 
         return cell
     }
     
+    // MARK: Helper Methods
+    
     public func dataItem(for indexPath: IndexPath) -> DataType {
         return data[indexPath.row]
+    }
+    
+    public func remove(at indexPath: IndexPath) {
+        let item: DataType = data[indexPath.row]
+        moc.delete(item as! NSManagedObject)
     }
 }
