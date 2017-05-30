@@ -17,6 +17,8 @@
 		D1828ADF1E840CEF00246847 /* iTunesFeedReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1828ADE1E840CEF00246847 /* iTunesFeedReader.swift */; };
 		D1B81DAC1E460F660020B476 /* BundleVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B81DAB1E460F660020B476 /* BundleVersion.swift */; };
 		D1B8660E1ED842EC0035E563 /* TvCoreDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B8660D1ED842EC0035E563 /* TvCoreDataSource.swift */; };
+		D1C0CAE01EDD89D3006CF395 /* VideoBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C0CADF1EDD89D3006CF395 /* VideoBackgroundView.swift */; };
+		D1C0CAE21EDD89ED006CF395 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1C0CAE11EDD89ED006CF395 /* MediaPlayer.framework */; };
 		D1E31E781E44BB4000C04D16 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E31E771E44BB4000C04D16 /* DataController.swift */; };
 		D1E31E7B1E44BB7000C04D16 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1E31E7A1E44BB7000C04D16 /* CoreData.framework */; };
 		D1E31E7E1E44BCD300C04D16 /* DataFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E31E7D1E44BCD300C04D16 /* DataFactory.swift */; };
@@ -49,6 +51,8 @@
 		D1828ADE1E840CEF00246847 /* iTunesFeedReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iTunesFeedReader.swift; sourceTree = "<group>"; };
 		D1B81DAB1E460F660020B476 /* BundleVersion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BundleVersion.swift; sourceTree = "<group>"; };
 		D1B8660D1ED842EC0035E563 /* TvCoreDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TvCoreDataSource.swift; sourceTree = "<group>"; };
+		D1C0CADF1EDD89D3006CF395 /* VideoBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoBackgroundView.swift; sourceTree = "<group>"; };
+		D1C0CAE11EDD89ED006CF395 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		D1E31E771E44BB4000C04D16 /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		D1E31E7A1E44BB7000C04D16 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		D1E31E7D1E44BCD300C04D16 /* DataFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataFactory.swift; sourceTree = "<group>"; };
@@ -61,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1C0CAE21EDD89ED006CF395 /* MediaPlayer.framework in Frameworks */,
 				D1E31E7B1E44BB7000C04D16 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -81,6 +86,7 @@
 			children = (
 				D116A4E51E83575D0063FF18 /* FeedViewController.swift */,
 				D1B8660D1ED842EC0035E563 /* TvCoreDataSource.swift */,
+				D1C0CADF1EDD89D3006CF395 /* VideoBackgroundView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -160,6 +166,7 @@
 		D1E31E791E44BB7000C04D16 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D1C0CAE11EDD89ED006CF395 /* MediaPlayer.framework */,
 				D1E31E7A1E44BB7000C04D16 /* CoreData.framework */,
 			);
 			name = Frameworks;
@@ -289,6 +296,7 @@
 				D1E31E7E1E44BCD300C04D16 /* DataFactory.swift in Sources */,
 				D1B8660E1ED842EC0035E563 /* TvCoreDataSource.swift in Sources */,
 				D1828ADF1E840CEF00246847 /* iTunesFeedReader.swift in Sources */,
+				D1C0CAE01EDD89D3006CF395 /* VideoBackgroundView.swift in Sources */,
 				D1E31E781E44BB4000C04D16 /* DataController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
