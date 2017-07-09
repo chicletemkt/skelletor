@@ -21,6 +21,7 @@ enum DataControllerError : Error {
 
 /// Data model for this app. This is a façade which maintains all related data operations encapsulated into a single
 /// interface. It holds, basically, all boiler plate code for Core Data.
+@available(*, deprecated: 10.0, message: "Use NSPersistentContainer instead")
 public class DataController {
     /// Managed object context. Access point to Core Data stack
     public let context: NSManagedObjectContext
