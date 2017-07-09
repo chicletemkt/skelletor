@@ -15,6 +15,7 @@
 		D16DA7341E44B9EE004219DC /* Skelletor.h in Headers */ = {isa = PBXBuildFile; fileRef = D16DA7261E44B9ED004219DC /* Skelletor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D1828ADD1E83F7CE00246847 /* iTunesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1828ADC1E83F7CE00246847 /* iTunesModel.swift */; };
 		D1828ADF1E840CEF00246847 /* iTunesFeedReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1828ADE1E840CEF00246847 /* iTunesFeedReader.swift */; };
+		D199741C1F12BB7900FF6B7E /* WebServiceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D199741B1F12BB7900FF6B7E /* WebServiceStore.swift */; };
 		D1B81DAC1E460F660020B476 /* BundleVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B81DAB1E460F660020B476 /* BundleVersion.swift */; };
 		D1B8660E1ED842EC0035E563 /* TvCoreDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B8660D1ED842EC0035E563 /* TvCoreDataSource.swift */; };
 		D1C0CAE01EDD89D3006CF395 /* VideoBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C0CADF1EDD89D3006CF395 /* VideoBackgroundView.swift */; };
@@ -49,6 +50,7 @@
 		D16DA7331E44B9EE004219DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D1828ADC1E83F7CE00246847 /* iTunesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iTunesModel.swift; sourceTree = "<group>"; };
 		D1828ADE1E840CEF00246847 /* iTunesFeedReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iTunesFeedReader.swift; sourceTree = "<group>"; };
+		D199741B1F12BB7900FF6B7E /* WebServiceStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebServiceStore.swift; sourceTree = "<group>"; };
 		D1B81DAB1E460F660020B476 /* BundleVersion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BundleVersion.swift; sourceTree = "<group>"; };
 		D1B8660D1ED842EC0035E563 /* TvCoreDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TvCoreDataSource.swift; sourceTree = "<group>"; };
 		D1C0CADF1EDD89D3006CF395 /* VideoBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoBackgroundView.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 				D1E31E7D1E44BCD300C04D16 /* DataFactory.swift */,
 				D1E31E7F1E44BDD000C04D16 /* DataFetcher.swift */,
 				D1E7FEFC1ECDDF2500EF734B /* ImageTransformer.swift */,
+				D199741B1F12BB7900FF6B7E /* WebServiceStore.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 			files = (
 				D1B81DAC1E460F660020B476 /* BundleVersion.swift in Sources */,
 				D1E7FEFD1ECDDF2500EF734B /* ImageTransformer.swift in Sources */,
+				D199741C1F12BB7900FF6B7E /* WebServiceStore.swift in Sources */,
 				D134913D1E453E280074ECFD /* EnvironmentFriendly.swift in Sources */,
 				D134913F1E453E620074ECFD /* EnvironmentInjector.swift in Sources */,
 				D1E31E801E44BDD000C04D16 /* DataFetcher.swift in Sources */,
