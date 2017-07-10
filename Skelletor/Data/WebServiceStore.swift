@@ -109,8 +109,25 @@ open class WebServiceStore: NSIncrementalStore {
     open override func newValuesForObject(with objectID: NSManagedObjectID, with context: NSManagedObjectContext) throws -> NSIncrementalStoreNode {
         let objectKey = referenceObject(for: objectID)
         let entity = objectID.entity.name!
-        let values = try getValuesForObject(for: entity, and: objectKey)
-        return NSIncrementalStoreNode(objectID: objectID, withValues: values, version: 0)
+        var values = try getValuesForObject(for: entity, and: objectKey)
+        let version: UInt64 = values["version"] as? UInt64 ?? 0
+        if values["version"] != nil {
+            values.removeValue(forKey: "version")
+        }
+        return NSIncrementalStoreNode(objectID: objectID, withValues: values, version: version)
+    }
+
+    /// Obtains permanent IDs for a given object
+    ///
+    /// - Parameter array: array of objects to get permanent IDs
+    /// - Returns: list of managed object IDs
+    open override func obtainPermanentIDs(for array: [NSManagedObject]) throws -> [NSManagedObjectID] {
+        var objectIDs = [NSManagedObjectID]()
+        let keys = try getObjectKeys(for: array)
+        for (key, object) in keys {
+            objectIDs.append(newObjectID(for: object.entity, referenceObject: key))
+        }
+        return objectIDs
     }
 }
 
@@ -137,6 +154,16 @@ extension WebServiceStore {
     open func getValuesForObject(for entity: String, and key: Any) throws -> [String:Any] {
         throw WebServiceStoreError.mustBeOverriden
     }
+    
+    /// Get a permanent object ID for a given temporary object
+    ///
+    /// - Parameter object: Object to get the permanente ID for
+    /// - Returns: An array of tuples. Each tuple have the key and its correspondent object
+    /// - Important:
+    /// This method must be overriden. Its default implementation just throws an exception.
+    open func getObjectKeys(for objects: [NSManagedObject]) throws -> [(Any, NSManagedObject)] {
+        throw WebServiceStoreError.mustBeOverriden
+    }
 }
 
 // MARK: - Internal Methods
@@ -150,7 +177,8 @@ extension WebServiceStore {
         }
         var managedObjects = [NSManagedObject]()
         for key in try getUniqueIds(for: fetchRequest) {
-            if let objectID = newObjectId(for: key, entity: entityName, using: context) {
+            if let entityDescription = NSEntityDescription.entity(forEntityName: entityName, in: context) {
+                let objectID = newObjectID(for: entityDescription, referenceObject: key)
                 managedObjects.append(context.object(with: objectID))
             }
         }
@@ -158,13 +186,7 @@ extension WebServiceStore {
     }
     
     func execute(saveRequest: NSSaveChangesRequest, with context: NSManagedObjectContext?) throws -> [NSManagedObject] {
+        
         return [NSManagedObject]()
-    }
-    
-    func newObjectId(for key: Any, entity: String, using context: NSManagedObjectContext) -> NSManagedObjectID? {
-        if let entityDescription = NSEntityDescription.entity(forEntityName: entity, in: context) {
-            return newObjectID(for: entityDescription, referenceObject: key)
-        }
-        return nil
     }
 }
