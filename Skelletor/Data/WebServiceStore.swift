@@ -25,6 +25,13 @@ public enum WebServiceStoreError: Error {
     case mustBeOverriden
 }
 
+/// Set of objects that are requested to be inserted, deleted, updated or have its versions updated on backing store.
+public typealias SaveParty = (
+    inserted: Set<NSManagedObject>?,
+    updated: Set<NSManagedObject>?,
+    deleted: Set<NSManagedObject>?,
+    locked: Set<NSManagedObject>?)
+
 /// General web service store for incremental stores.
 open class WebServiceStore: NSIncrementalStore {
     /// Default session. You may override it to initialize with a different type of session. By default,
@@ -123,7 +130,7 @@ open class WebServiceStore: NSIncrementalStore {
     /// - Returns: list of managed object IDs
     open override func obtainPermanentIDs(for array: [NSManagedObject]) throws -> [NSManagedObjectID] {
         var objectIDs = [NSManagedObjectID]()
-        let keys = try getObjectKeys(for: array)
+        let keys = try createObjectKeys(for: array)
         for (key, object) in keys {
             objectIDs.append(newObjectID(for: object.entity, referenceObject: key))
         }
@@ -155,13 +162,22 @@ extension WebServiceStore {
         throw WebServiceStoreError.mustBeOverriden
     }
     
-    /// Get a permanent object ID for a given temporary object
+    /// Asks the backstore to create object keys for the provided managed objects
     ///
     /// - Parameter object: Object to get the permanente ID for
     /// - Returns: An array of tuples. Each tuple have the key and its correspondent object
     /// - Important:
     /// This method must be overriden. Its default implementation just throws an exception.
-    open func getObjectKeys(for objects: [NSManagedObject]) throws -> [(Any, NSManagedObject)] {
+    open func createObjectKeys(for objects: [NSManagedObject]) throws -> [(Any, NSManagedObject)] {
+        throw WebServiceStoreError.mustBeOverriden
+    }
+    
+    /// Persist those into backing store.
+    ///
+    /// - Parameter saveParty: a tuple containing objects to save (inserted), update, delete and lock
+    /// - Important:
+    /// This method must be overriden. Its default implementation just throws an exception.
+    open func persistToBackingStore(saveParty: SaveParty) throws {
         throw WebServiceStoreError.mustBeOverriden
     }
 }
@@ -186,7 +202,11 @@ extension WebServiceStore {
     }
     
     func execute(saveRequest: NSSaveChangesRequest, with context: NSManagedObjectContext?) throws -> [NSManagedObject] {
-        
+        let saveParty = SaveParty(inserted: saveRequest.insertedObjects,
+                                  updated : saveRequest.updatedObjects,
+                                  deleted : saveRequest.deletedObjects,
+                                  locked  : saveRequest.lockedObjects)
+        try persistToBackingStore(saveParty: saveParty)
         return [NSManagedObject]()
     }
 }
