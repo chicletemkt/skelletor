@@ -136,10 +136,9 @@ open class WebServiceStore: NSIncrementalStore {
         }
         return objectIDs
     }
-}
+    
+    // MARK: - Extension Points
 
-// MARK: - Extension Points
-extension WebServiceStore {
     /// Returns unique IDs for object creation.
     ///
     /// - Parameter fetchRequest: Fetch request to evaluate
