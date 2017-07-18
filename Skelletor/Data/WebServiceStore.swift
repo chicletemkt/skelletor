@@ -21,6 +21,7 @@ public enum WebServiceStoreError: Error {
     case noStoreURL
     case invalidURLType
     case invalidRequest
+    case invalidService(entity: String)
     case noEntity
     case noContext
     case mustBeOverriden
@@ -31,6 +32,9 @@ open class WebServiceStore: NSIncrementalStore {
     /// Default session. You may override it to initialize with a different type of session. By default,
     /// it uses the default URL session without any configuration changes.
     open var session: URLSession = URLSession.shared
+    
+    /// Set of web services served by this store web store
+    open var services: Set<WebService>!
     
     /// Unique Identification for this store (UUID) as a String representation.
     /// - important:
@@ -163,52 +167,6 @@ open class WebServiceStore: NSIncrementalStore {
         }
         return categorizedObjects
     }
-    
-    // MARK: - Extension Points
-
-    /// Returns unique IDs for object creation.
-    ///
-    /// - Parameter fetchRequest: Fetch request to evaluate
-    /// - Returns: A list of unique ids, grabbed from a web service
-    /// - Important:
-    /// This method must be overriden. Its default implementation just throws an exception.
-    open func getUniqueIds(for fetchRequest: NSFetchRequest<NSFetchRequestResult>) throws -> [Any] {
-        throw WebServiceStoreError.mustBeOverriden
-    }
-    
-    /// Get values from the web service for a given entity and key
-    ///
-    /// - Parameters:
-    ///   - entity: Entity name
-    ///   - key: Entity key information (e.g., primary key)
-    /// - Returns: List of pairs attribute/values
-    /// - Important:
-    /// This method must be overriden. Its default implementation just throws an exception.
-    open func getValuesForObject(for entity: String, and key: Any) throws -> [String:Any] {
-        throw WebServiceStoreError.mustBeOverriden
-    }
-    
-    /// Create permanent object keys for a list of categorized objects
-    ///
-    /// - Parameter categorizedObjects: List of categorized objects
-    /// - Returns: List of tuples Key/Object
-    /// - Important:
-    /// This method must be overriden. Its default implementation just throws an exception.
-    open func createObjectKeys(for categorizedObjects: [String:[NSManagedObject]]) throws -> [(Any, NSManagedObject)] {
-        throw WebServiceStoreError.mustBeOverriden
-    }
-    
-    /// Persist data to the backing store
-    ///
-    /// - Parameters:
-    ///   - saveRequest: Save request to execute
-    ///   - context: managed object context
-    /// - Returns: An empty list o NSManagedObject on success
-    /// - Important:
-    /// This method must be overriden. Its default implementation just throws an exception.
-    open func persistToBackingStore(saveRequest: NSSaveChangesRequest, with context: NSManagedObjectContext?) throws -> [NSManagedObject] {
-        throw WebServiceStoreError.mustBeOverriden
-    }
 }
 
 // MARK: - Internal Methods
@@ -228,5 +186,34 @@ extension WebServiceStore {
             }
         }
         return managedObjects
+    }
+    
+    func createObjectKeys(for categorizedObjects: [String:[NSManagedObject]]) throws -> [(Any, NSManagedObject)] {
+        for (entity, objectList) in categorizedObjects {
+            let service = services.filter({ (webService) -> Bool in
+                return webService.entity == entity
+            }).first
+            if service == nil {
+                throw WebServiceStoreError.unsupportedEntity(entity: entity)
+            }
+            if let srv = service as? IncrementalWebService {
+                let returnList = try srv.createKeys(for: objectList)
+                return returnList
+            }
+            throw WebServiceStoreError.invalidService(entity: entity)
+        }
+        return [(Any, NSManagedObject)]()
+    }
+    
+    func getUniqueIds(for fetchRequest: NSFetchRequest<NSFetchRequestResult>) throws -> [Any] {
+        throw WebServiceStoreError.mustBeOverriden
+    }
+    
+    func getValuesForObject(for entity: String, and key: Any) throws -> [String:Any] {
+        throw WebServiceStoreError.mustBeOverriden
+    }
+    
+    func persistToBackingStore(saveRequest: NSSaveChangesRequest, with context: NSManagedObjectContext?) throws -> [NSManagedObject] {
+        throw WebServiceStoreError.mustBeOverriden
     }
 }
