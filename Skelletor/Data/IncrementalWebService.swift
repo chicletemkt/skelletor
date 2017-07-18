@@ -43,5 +43,5 @@ public protocol IncrementalWebService {
     /// - Returns: An empty list o NSManagedObject on success
     /// - Important:
     /// This method must be overriden. Its default implementation just throws an exception.
-    func persistToBackingStore(saveRequest: NSSaveChangesRequest, with context: NSManagedObjectContext?) throws -> [NSManagedObject]
+    func persistToBackingStore(saveRequest: NSSaveChangesRequest, with context: NSManagedObjectContext?) throws
 }

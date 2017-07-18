@@ -29,6 +29,9 @@ public enum WebServiceStoreError: Error {
 
 /// General web service store for incremental stores.
 open class WebServiceStore: NSIncrementalStore {
+    public typealias CategorizedSetOfObjects = [String:Set<NSManagedObject>]
+    public typealias CategorizedArrayOfObjects = [String:Array<NSManagedObject>]
+    
     /// Default session. You may override it to initialize with a different type of session. By default,
     /// it uses the default URL session without any configuration changes.
     open var session: URLSession = URLSession.shared
@@ -140,8 +143,8 @@ open class WebServiceStore: NSIncrementalStore {
     ///
     /// - Parameter objects: Objects to categorize
     /// - Returns: Categorized list of managed objects
-    public func categorize(array ofObjects: [NSManagedObject]) -> [String:[NSManagedObject]] {
-        var categorizedObjects = [String:[NSManagedObject]]()
+    public func categorize(array ofObjects: [NSManagedObject]) -> CategorizedArrayOfObjects {
+        var categorizedObjects = CategorizedArrayOfObjects()
         ofObjects.forEach { (managedObject) in
             let entity = managedObject.entity.name!
             if categorizedObjects[entity]?.append(managedObject) == nil {
@@ -156,8 +159,8 @@ open class WebServiceStore: NSIncrementalStore {
     ///
     /// - Parameter objects: Set of objects to categorize
     /// - Returns: Categorized objects
-    public func categorize(set ofObjects: Set<NSManagedObject>) -> [String: Set<NSManagedObject>] {
-        var categorizedObjects = [String: Set<NSManagedObject>]()
+    public func categorize(set ofObjects: Set<NSManagedObject>) -> CategorizedSetOfObjects {
+        var categorizedObjects = CategorizedSetOfObjects()
         ofObjects.forEach { (managedObject) in
             let entity = managedObject.entity.name!
             if categorizedObjects[entity]?.insert(managedObject) == nil {
@@ -212,8 +215,15 @@ extension WebServiceStore {
     func getValuesForObject(for entity: String, and key: Any) throws -> [String:Any] {
         throw WebServiceStoreError.mustBeOverriden
     }
-    
+
     func persistToBackingStore(saveRequest: NSSaveChangesRequest, with context: NSManagedObjectContext?) throws -> [NSManagedObject] {
-        throw WebServiceStoreError.mustBeOverriden
+        for service in services {
+            if let srv = service as? IncrementalWebService {
+                try srv.persistToBackingStore(saveRequest: saveRequest, with: context)
+            } else {
+                throw WebServiceStoreError.invalidService(entity: service.entity)
+            }
+        }
+        return Array<NSManagedObject>()
     }
 }
