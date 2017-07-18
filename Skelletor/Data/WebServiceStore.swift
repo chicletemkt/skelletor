@@ -17,6 +17,7 @@ import Foundation
 /// - noContext: Managed object context was not provided
 /// - mustBeOverriden: Method must be overriden by descendant classes
 public enum WebServiceStoreError: Error {
+    case unsupportedEntity(entity: String)
     case noStoreURL
     case invalidURLType
     case invalidRequest
@@ -24,13 +25,6 @@ public enum WebServiceStoreError: Error {
     case noContext
     case mustBeOverriden
 }
-
-/// Set of objects that are requested to be inserted, deleted, updated or have its versions updated on backing store.
-public typealias SaveParty = (
-    inserted: Set<NSManagedObject>?,
-    updated: Set<NSManagedObject>?,
-    deleted: Set<NSManagedObject>?,
-    locked: Set<NSManagedObject>?)
 
 /// General web service store for incremental stores.
 open class WebServiceStore: NSIncrementalStore {
@@ -101,7 +95,7 @@ open class WebServiceStore: NSIncrementalStore {
         case let fetchRequest as NSFetchRequest<NSFetchRequestResult>:
             return try execute(fetchRequest: fetchRequest, with: context)
         case let saveRequest as NSSaveChangesRequest:
-            return try execute(saveRequest: saveRequest, with: context)
+            return try persistToBackingStore(saveRequest: saveRequest, with: context)
         default:
             throw WebServiceStoreError.invalidRequest
         }
@@ -130,11 +124,44 @@ open class WebServiceStore: NSIncrementalStore {
     /// - Returns: list of managed object IDs
     open override func obtainPermanentIDs(for array: [NSManagedObject]) throws -> [NSManagedObjectID] {
         var objectIDs = [NSManagedObjectID]()
-        let keys = try createObjectKeys(for: array)
+        let objects = categorize(array: array)
+        let keys = try createObjectKeys(for: objects)
         for (key, object) in keys {
             objectIDs.append(newObjectID(for: object.entity, referenceObject: key))
         }
         return objectIDs
+    }
+    
+    /// Categorizes a list of managed object by type.
+    ///
+    /// - Parameter objects: Objects to categorize
+    /// - Returns: Categorized list of managed objects
+    public func categorize(array ofObjects: [NSManagedObject]) -> [String:[NSManagedObject]] {
+        var categorizedObjects = [String:[NSManagedObject]]()
+        ofObjects.forEach { (managedObject) in
+            let entity = managedObject.entity.name!
+            if categorizedObjects[entity]?.append(managedObject) == nil {
+                categorizedObjects[entity] = [NSManagedObject]()
+                categorizedObjects[entity]?.append(managedObject)
+            }
+        }
+        return categorizedObjects
+    }
+    
+    /// Categorize a set of objects, returning a categorized set of it
+    ///
+    /// - Parameter objects: Set of objects to categorize
+    /// - Returns: Categorized objects
+    public func categorize(set ofObjects: Set<NSManagedObject>) -> [String: Set<NSManagedObject>] {
+        var categorizedObjects = [String: Set<NSManagedObject>]()
+        ofObjects.forEach { (managedObject) in
+            let entity = managedObject.entity.name!
+            if categorizedObjects[entity]?.insert(managedObject) == nil {
+                categorizedObjects[entity] = Set<NSManagedObject>()
+                categorizedObjects[entity]?.insert(managedObject)
+            }
+        }
+        return categorizedObjects
     }
     
     // MARK: - Extension Points
@@ -161,22 +188,25 @@ open class WebServiceStore: NSIncrementalStore {
         throw WebServiceStoreError.mustBeOverriden
     }
     
-    /// Asks the backstore to create object keys for the provided managed objects
+    /// Create permanent object keys for a list of categorized objects
     ///
-    /// - Parameter object: Object to get the permanente ID for
-    /// - Returns: An array of tuples. Each tuple have the key and its correspondent object
+    /// - Parameter categorizedObjects: List of categorized objects
+    /// - Returns: List of tuples Key/Object
     /// - Important:
     /// This method must be overriden. Its default implementation just throws an exception.
-    open func createObjectKeys(for objects: [NSManagedObject]) throws -> [(Any, NSManagedObject)] {
+    open func createObjectKeys(for categorizedObjects: [String:[NSManagedObject]]) throws -> [(Any, NSManagedObject)] {
         throw WebServiceStoreError.mustBeOverriden
     }
     
-    /// Persist those into backing store.
+    /// Persist data to the backing store
     ///
-    /// - Parameter saveParty: a tuple containing objects to save (inserted), update, delete and lock
+    /// - Parameters:
+    ///   - saveRequest: Save request to execute
+    ///   - context: managed object context
+    /// - Returns: An empty list o NSManagedObject on success
     /// - Important:
     /// This method must be overriden. Its default implementation just throws an exception.
-    open func persistToBackingStore(saveParty: SaveParty) throws {
+    open func persistToBackingStore(saveRequest: NSSaveChangesRequest, with context: NSManagedObjectContext?) throws -> [NSManagedObject] {
         throw WebServiceStoreError.mustBeOverriden
     }
 }
@@ -198,14 +228,5 @@ extension WebServiceStore {
             }
         }
         return managedObjects
-    }
-    
-    func execute(saveRequest: NSSaveChangesRequest, with context: NSManagedObjectContext?) throws -> [NSManagedObject] {
-        let saveParty = SaveParty(inserted: saveRequest.insertedObjects,
-                                  updated : saveRequest.updatedObjects,
-                                  deleted : saveRequest.deletedObjects,
-                                  locked  : saveRequest.lockedObjects)
-        try persistToBackingStore(saveParty: saveParty)
-        return [NSManagedObject]()
     }
 }

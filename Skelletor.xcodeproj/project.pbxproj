@@ -10,6 +10,8 @@
 		D134913B1E453A980074ECFD /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D134913A1E453A980074ECFD /* Environment.swift */; };
 		D134913D1E453E280074ECFD /* EnvironmentFriendly.swift in Sources */ = {isa = PBXBuildFile; fileRef = D134913C1E453E280074ECFD /* EnvironmentFriendly.swift */; };
 		D134913F1E453E620074ECFD /* EnvironmentInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = D134913E1E453E620074ECFD /* EnvironmentInjector.swift */; };
+		D141B4CE1F1D575400549432 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D141B4CD1F1D575400549432 /* WebService.swift */; };
+		D141B4D21F1D621A00549432 /* IncrementalWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D141B4D11F1D621A00549432 /* IncrementalWebService.swift */; };
 		D16DA72D1E44B9EE004219DC /* Skelletor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D16DA7231E44B9ED004219DC /* Skelletor.framework */; };
 		D16DA7321E44B9EE004219DC /* SkelletorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16DA7311E44B9EE004219DC /* SkelletorTests.swift */; };
 		D16DA7341E44B9EE004219DC /* Skelletor.h in Headers */ = {isa = PBXBuildFile; fileRef = D16DA7261E44B9ED004219DC /* Skelletor.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -42,6 +44,8 @@
 		D134913A1E453A980074ECFD /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		D134913C1E453E280074ECFD /* EnvironmentFriendly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnvironmentFriendly.swift; sourceTree = "<group>"; };
 		D134913E1E453E620074ECFD /* EnvironmentInjector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnvironmentInjector.swift; sourceTree = "<group>"; };
+		D141B4CD1F1D575400549432 /* WebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
+		D141B4D11F1D621A00549432 /* IncrementalWebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncrementalWebService.swift; sourceTree = "<group>"; };
 		D16DA7231E44B9ED004219DC /* Skelletor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Skelletor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D16DA7261E44B9ED004219DC /* Skelletor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Skelletor.h; sourceTree = "<group>"; };
 		D16DA7271E44B9ED004219DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -157,11 +161,13 @@
 		D1E31E761E44BB1A00C04D16 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				D141B4CD1F1D575400549432 /* WebService.swift */,
 				D1E31E771E44BB4000C04D16 /* DataController.swift */,
 				D1E31E7D1E44BCD300C04D16 /* DataFactory.swift */,
 				D1E31E7F1E44BDD000C04D16 /* DataFetcher.swift */,
 				D1E7FEFC1ECDDF2500EF734B /* ImageTransformer.swift */,
 				D199741B1F12BB7900FF6B7E /* WebServiceStore.swift */,
+				D141B4D11F1D621A00549432 /* IncrementalWebService.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -291,6 +297,7 @@
 			files = (
 				D1B81DAC1E460F660020B476 /* BundleVersion.swift in Sources */,
 				D1E7FEFD1ECDDF2500EF734B /* ImageTransformer.swift in Sources */,
+				D141B4CE1F1D575400549432 /* WebService.swift in Sources */,
 				D199741C1F12BB7900FF6B7E /* WebServiceStore.swift in Sources */,
 				D134913D1E453E280074ECFD /* EnvironmentFriendly.swift in Sources */,
 				D134913F1E453E620074ECFD /* EnvironmentInjector.swift in Sources */,
@@ -302,6 +309,7 @@
 				D1828ADF1E840CEF00246847 /* iTunesFeedReader.swift in Sources */,
 				D1C0CAE01EDD89D3006CF395 /* VideoBackgroundView.swift in Sources */,
 				D1E31E781E44BB4000C04D16 /* DataController.swift in Sources */,
+				D141B4D21F1D621A00549432 /* IncrementalWebService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
