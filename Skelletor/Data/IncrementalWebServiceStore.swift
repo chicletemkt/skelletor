@@ -16,7 +16,7 @@ import Foundation
 /// - noEntity: Fetch request has no entity attached to it
 /// - noContext: Managed object context was not provided
 /// - mustBeOverriden: Method must be overriden by descendant classes
-public enum WebServiceStoreError: Error {
+public enum IncrementalWebServiceStoreError: Error {
     case unsupportedEntity(entity: String)
     case noStoreURL
     case invalidURLType
@@ -28,7 +28,7 @@ public enum WebServiceStoreError: Error {
 }
 
 /// General web service store for incremental stores.
-open class WebServiceStore: NSIncrementalStore {
+open class IncrementalWebServiceStore: NSIncrementalStore {
     public typealias CategorizedSetOfObjects = [String:Set<NSManagedObject>]
     public typealias CategorizedArrayOfObjects = [String:Array<NSManagedObject>]
     
@@ -37,7 +37,7 @@ open class WebServiceStore: NSIncrementalStore {
     open var session: URLSession = URLSession.shared
     
     /// Set of web services served by this store web store
-    open var services: Set<WebService>!
+    open var services: Set<IncrementalWebService>!
     
     /// Unique Identification for this store (UUID) as a String representation.
     /// - important:
@@ -75,14 +75,14 @@ open class WebServiceStore: NSIncrementalStore {
     
     /// Loads this store metadata
     ///
-    /// - Throws: WebServiceStoreError.noStoreURL if URL was not provided to the store
-    /// - Throws: WebServiceStoreError.invalidURLType if provided URL is a file URL
+    /// - Throws: IncrementalWebServiceStoreError.noStoreURL if URL was not provided to the store
+    /// - Throws: IncrementalWebServiceStoreError.invalidURLType if provided URL is a file URL
     open override func loadMetadata() throws {
         guard self.url != nil else {
-            throw WebServiceStoreError.noStoreURL
+            throw IncrementalWebServiceStoreError.noStoreURL
         }
         if self.url!.isFileURL {
-            throw WebServiceStoreError.invalidURLType
+            throw IncrementalWebServiceStoreError.invalidURLType
         }
         self.metadata = [NSStoreUUIDKey: uuid, NSStoreTypeKey: type]
     }
@@ -94,9 +94,9 @@ open class WebServiceStore: NSIncrementalStore {
     ///   - context: managed object context
     /// - Returns: List of managed objects, if it is the case.
     /// - Throws: 
-    ///     - WebServiceStoreError.noContext
-    ///     - WebServiceStoreError.noEntity
-    ///     - WebServiceStoreError.noExecutor(entity)
+    ///     - IncrementalWebServiceStoreError.noContext
+    ///     - IncrementalWebServiceStoreError.noEntity
+    ///     - IncrementalWebServiceStoreError.noExecutor(entity)
     open override func execute(_ request: NSPersistentStoreRequest, with context: NSManagedObjectContext?) throws -> Any {
         switch request {
         case let fetchRequest as NSFetchRequest<NSFetchRequestResult>:
@@ -104,7 +104,7 @@ open class WebServiceStore: NSIncrementalStore {
         case let saveRequest as NSSaveChangesRequest:
             return try persistToBackingStore(saveRequest: saveRequest, with: context)
         default:
-            throw WebServiceStoreError.invalidRequest
+            throw IncrementalWebServiceStoreError.invalidRequest
         }
     }
     
@@ -173,13 +173,13 @@ open class WebServiceStore: NSIncrementalStore {
 }
 
 // MARK: - Internal Methods
-extension WebServiceStore {
+extension IncrementalWebServiceStore {
     func execute(fetchRequest: NSFetchRequest<NSFetchRequestResult>, with context: NSManagedObjectContext?) throws -> [NSManagedObject] {
         guard let context = context else {
-            throw WebServiceStoreError.noContext
+            throw IncrementalWebServiceStoreError.noContext
         }
         guard let entityName = fetchRequest.entity?.name else {
-            throw WebServiceStoreError.noEntity
+            throw IncrementalWebServiceStoreError.noEntity
         }
         var managedObjects = [NSManagedObject]()
         for key in try getUniqueIds(for: fetchRequest) {
@@ -197,32 +197,25 @@ extension WebServiceStore {
                 return webService.entity == entity
             }).first
             if service == nil {
-                throw WebServiceStoreError.unsupportedEntity(entity: entity)
+                throw IncrementalWebServiceStoreError.unsupportedEntity(entity: entity)
             }
-            if let srv = service as? IncrementalWebService {
-                let returnList = try srv.createKeys(for: objectList)
-                return returnList
-            }
-            throw WebServiceStoreError.invalidService(entity: entity)
+            let returnList = try service!.createKeys(for: objectList)
+            return returnList
         }
         return [(Any, NSManagedObject)]()
     }
     
     func getUniqueIds(for fetchRequest: NSFetchRequest<NSFetchRequestResult>) throws -> [Any] {
-        throw WebServiceStoreError.mustBeOverriden
+        throw IncrementalWebServiceStoreError.mustBeOverriden
     }
     
     func getValuesForObject(for entity: String, and key: Any) throws -> [String:Any] {
-        throw WebServiceStoreError.mustBeOverriden
+        throw IncrementalWebServiceStoreError.mustBeOverriden
     }
 
     func persistToBackingStore(saveRequest: NSSaveChangesRequest, with context: NSManagedObjectContext?) throws -> [NSManagedObject] {
         for service in services {
-            if let srv = service as? IncrementalWebService {
-                try srv.persistToBackingStore(saveRequest: saveRequest, with: context)
-            } else {
-                throw WebServiceStoreError.invalidService(entity: service.entity)
-            }
+            try service.persistToBackingStore(saveRequest: saveRequest, with: context)
         }
         return Array<NSManagedObject>()
     }
