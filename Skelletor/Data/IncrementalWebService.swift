@@ -19,6 +19,7 @@ public enum IncrementalWebServiceError: Error {
     case invalidDataReceived
     case wrongNumberOfItemsReceived
     case mustBeOverriden
+    case httpError(code: Int)
 }
 
 /// Encapsulates all about a given web service
@@ -73,16 +74,27 @@ open class IncrementalWebService {
         }
         var foundError: IncrementalWebServiceError?
         let task = store.session.dataTask(with: request) { (data, response, error) in
+            defer {
+                barrier.signal()
+            }
             if error != nil, error?.localizedDescription != nil {
                 foundError = IncrementalWebServiceError.requestError(message: error!.localizedDescription)
-            } else {
-                do {
-                    try callback?(data)
-                } catch {
-                    foundError = IncrementalWebServiceError.invalidDataReceived
+                return
+            }
+            if let httpResponse = response as? HTTPURLResponse {
+                switch httpResponse.statusCode / 100 {
+                case 4, 5:
+                    foundError = IncrementalWebServiceError.httpError(code: httpResponse.statusCode)
+                    return
+                default:
+                    break
                 }
             }
-            barrier.signal()
+            do {
+                try callback?(data)
+            } catch {
+                foundError = IncrementalWebServiceError.invalidDataReceived
+            }
         }
         task.resume()
         if !barrier.wait(until: Date().addingTimeInterval(timeout)) {
