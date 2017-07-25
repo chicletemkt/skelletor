@@ -19,7 +19,7 @@ public enum IncrementalWebServiceError: Error {
     case invalidDataReceived
     case wrongNumberOfItemsReceived
     case mustBeOverriden
-    case httpError(code: Int)
+    case httpError(code: HttpCode)
 }
 
 /// Encapsulates all about a given web service
@@ -84,7 +84,7 @@ open class IncrementalWebService {
             if let httpResponse = response as? HTTPURLResponse {
                 switch httpResponse.statusCode / 100 {
                 case 4, 5:
-                    foundError = IncrementalWebServiceError.httpError(code: httpResponse.statusCode)
+                    foundError = IncrementalWebServiceError.httpError(code: HttpCode(code: httpResponse.statusCode))
                     return
                 default:
                     break
