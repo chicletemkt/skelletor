@@ -206,11 +206,19 @@ extension IncrementalWebServiceStore {
     }
     
     func getUniqueIds(for fetchRequest: NSFetchRequest<NSFetchRequestResult>) throws -> [Any] {
-        throw IncrementalWebServiceStoreError.mustBeOverriden
+        if let entity = fetchRequest.entityName {
+            if let service = (services.filter { $0.entity == entity }).first {
+                return try service.getUniqueIds(for: fetchRequest)
+            }
+        }
+        throw IncrementalWebServiceStoreError.invalidRequest
     }
     
     func getValuesForObject(for entity: String, and key: Any) throws -> [String:Any] {
-        throw IncrementalWebServiceStoreError.mustBeOverriden
+        if let service = (services.filter { $0.entity == entity }).first {
+            return try service.getValuesForObject(using:key)
+        }
+        throw IncrementalWebServiceStoreError.invalidService(entity: entity)
     }
 
     func persistToBackingStore(saveRequest: NSSaveChangesRequest, with context: NSManagedObjectContext?) throws -> [NSManagedObject] {
