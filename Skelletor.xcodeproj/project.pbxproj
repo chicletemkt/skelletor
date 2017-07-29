@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D12D8DD51F2C1451009BC6B5 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12D8DD41F2C1451009BC6B5 /* WebService.swift */; };
 		D134913B1E453A980074ECFD /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D134913A1E453A980074ECFD /* Environment.swift */; };
 		D134913D1E453E280074ECFD /* EnvironmentFriendly.swift in Sources */ = {isa = PBXBuildFile; fileRef = D134913C1E453E280074ECFD /* EnvironmentFriendly.swift */; };
 		D134913F1E453E620074ECFD /* EnvironmentInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = D134913E1E453E620074ECFD /* EnvironmentInjector.swift */; };
@@ -41,6 +42,7 @@
 
 /* Begin PBXFileReference section */
 		D116A4E51E83575D0063FF18 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		D12D8DD41F2C1451009BC6B5 /* WebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		D134913A1E453A980074ECFD /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		D134913C1E453E280074ECFD /* EnvironmentFriendly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnvironmentFriendly.swift; sourceTree = "<group>"; };
 		D134913E1E453E620074ECFD /* EnvironmentInjector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnvironmentInjector.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				D199741B1F12BB7900FF6B7E /* IncrementalWebServiceStore.swift */,
 				D141B4CD1F1D575400549432 /* IncrementalWebService.swift */,
 				D1984B6C1F278EAB00A7F579 /* HttpCode.swift */,
+				D12D8DD41F2C1451009BC6B5 /* WebService.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 				D134913B1E453A980074ECFD /* Environment.swift in Sources */,
 				D1984B6D1F278EAB00A7F579 /* HttpCode.swift in Sources */,
 				D1828ADD1E83F7CE00246847 /* iTunesModel.swift in Sources */,
+				D12D8DD51F2C1451009BC6B5 /* WebService.swift in Sources */,
 				D1E31E7E1E44BCD300C04D16 /* DataFactory.swift in Sources */,
 				D1B8660E1ED842EC0035E563 /* TvCoreDataSource.swift in Sources */,
 				D1828ADF1E840CEF00246847 /* iTunesFeedReader.swift in Sources */,
