@@ -31,14 +31,19 @@ public class WebService {
     /// - Parameters:
     ///   - resource: Resource to contact
     ///   - timeout: Timeout. Defaults to 30 seconds.
+    ///   - data: JSON data
     ///   - configure: Callback used to customize the request
     /// - Returns: Created request
-    public func request(for resource: String, timeout: TimeInterval = 30, configure: ((URLRequest)->URLRequest)? = nil) -> URLRequest {
+    public func request(for resource: String, timeout: TimeInterval = 30, data: [String:Any]? = nil, configure: ((URLRequest)->URLRequest)? = nil) -> URLRequest {
         let url = root.appendingPathComponent(resource)
         var request = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: timeout)
         request.addValue(apiKey, forHTTPHeaderField: "x-api-key")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.httpMethod = "POST"
+        if let data = data {
+            request.httpBody = try? JSONSerialization.data(withJSONObject: data, options: [])
+        }
         if configure != nil {
             request = configure!(request)
         }
@@ -51,11 +56,17 @@ public class WebService {
     ///   - request: request to execute
     ///   - completionHandler: callback for data return and error processing
     /// - Returns: Data task created, already running in background
+    ///
+    /// - Remarks: It is guaranteed that the completion handler is called from the main queue.
     @discardableResult
-    public func execute(request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
+    public func execute(request: URLRequest, completionHandler: @escaping ([String:Any]?, HTTPURLResponse?, Error?) -> Void) -> URLSessionDataTask {
         let task = session.dataTask(with: request) { (data, response, error) in
             OperationQueue.main.addOperation {
-                completionHandler(data, response, error)
+                var json: [String:Any]? = nil
+                if let data = data, error == nil {
+                    json = (try? JSONSerialization.jsonObject(with: data, options: [])) as? [String : Any]
+                }
+                completionHandler(json, response as? HTTPURLResponse, error)
             }
         }
         task.resume()
