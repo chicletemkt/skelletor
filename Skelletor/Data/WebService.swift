@@ -10,7 +10,11 @@ import Foundation
 
 /// Simple RESTful web service interface
 public class WebService {
+    /// Root URL for the web service
     public let root: URL
+    /// Authorization token.
+    public var authorization: String?
+    /// Session current in use
     public var session: URLSession
     let apiKey: String
     
@@ -43,6 +47,9 @@ public class WebService {
         request.httpMethod = "POST"
         if let data = data {
             request.httpBody = try? JSONSerialization.data(withJSONObject: data, options: [])
+        }
+        if let authorization = authorization {
+            request.addValue(authorization, forHTTPHeaderField: "Authorization")
         }
         if configure != nil {
             request = configure!(request)
