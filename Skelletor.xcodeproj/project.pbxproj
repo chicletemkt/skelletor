@@ -11,6 +11,7 @@
 		D134913B1E453A980074ECFD /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D134913A1E453A980074ECFD /* Environment.swift */; };
 		D134913D1E453E280074ECFD /* EnvironmentFriendly.swift in Sources */ = {isa = PBXBuildFile; fileRef = D134913C1E453E280074ECFD /* EnvironmentFriendly.swift */; };
 		D134913F1E453E620074ECFD /* EnvironmentInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = D134913E1E453E620074ECFD /* EnvironmentInjector.swift */; };
+		D14952581F2FF35900DD74B6 /* ProgressController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14952571F2FF35900DD74B6 /* ProgressController.swift */; };
 		D16DA72D1E44B9EE004219DC /* Skelletor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D16DA7231E44B9ED004219DC /* Skelletor.framework */; };
 		D16DA7321E44B9EE004219DC /* SkelletorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16DA7311E44B9EE004219DC /* SkelletorTests.swift */; };
 		D16DA7341E44B9EE004219DC /* Skelletor.h in Headers */ = {isa = PBXBuildFile; fileRef = D16DA7261E44B9ED004219DC /* Skelletor.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -21,6 +22,8 @@
 		D1B8660E1ED842EC0035E563 /* TvCoreDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B8660D1ED842EC0035E563 /* TvCoreDataSource.swift */; };
 		D1C0CAE01EDD89D3006CF395 /* VideoBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C0CADF1EDD89D3006CF395 /* VideoBackgroundView.swift */; };
 		D1C0CAE21EDD89ED006CF395 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1C0CAE11EDD89ED006CF395 /* MediaPlayer.framework */; };
+		D1D16DEA1F30A86F002F0907 /* ProgressErrorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D16DE91F30A86F002F0907 /* ProgressErrorController.swift */; };
+		D1D16DEC1F30B54F002F0907 /* ProgressSuccessController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D16DEB1F30B54F002F0907 /* ProgressSuccessController.swift */; };
 		D1E31E781E44BB4000C04D16 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E31E771E44BB4000C04D16 /* DataController.swift */; };
 		D1E31E7B1E44BB7000C04D16 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1E31E7A1E44BB7000C04D16 /* CoreData.framework */; };
 		D1E31E7E1E44BCD300C04D16 /* DataFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E31E7D1E44BCD300C04D16 /* DataFactory.swift */; };
@@ -44,6 +47,7 @@
 		D134913A1E453A980074ECFD /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		D134913C1E453E280074ECFD /* EnvironmentFriendly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnvironmentFriendly.swift; sourceTree = "<group>"; };
 		D134913E1E453E620074ECFD /* EnvironmentInjector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnvironmentInjector.swift; sourceTree = "<group>"; };
+		D14952571F2FF35900DD74B6 /* ProgressController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressController.swift; sourceTree = "<group>"; };
 		D16DA7231E44B9ED004219DC /* Skelletor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Skelletor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D16DA7261E44B9ED004219DC /* Skelletor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Skelletor.h; sourceTree = "<group>"; };
 		D16DA7271E44B9ED004219DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -57,6 +61,8 @@
 		D1B8660D1ED842EC0035E563 /* TvCoreDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TvCoreDataSource.swift; sourceTree = "<group>"; };
 		D1C0CADF1EDD89D3006CF395 /* VideoBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoBackgroundView.swift; sourceTree = "<group>"; };
 		D1C0CAE11EDD89ED006CF395 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		D1D16DE91F30A86F002F0907 /* ProgressErrorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressErrorController.swift; sourceTree = "<group>"; };
+		D1D16DEB1F30B54F002F0907 /* ProgressSuccessController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressSuccessController.swift; sourceTree = "<group>"; };
 		D1E31E771E44BB4000C04D16 /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		D1E31E7A1E44BB7000C04D16 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		D1E31E7D1E44BCD300C04D16 /* DataFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataFactory.swift; sourceTree = "<group>"; };
@@ -91,6 +97,9 @@
 				D116A4E51E83575D0063FF18 /* FeedViewController.swift */,
 				D1B8660D1ED842EC0035E563 /* TvCoreDataSource.swift */,
 				D1C0CADF1EDD89D3006CF395 /* VideoBackgroundView.swift */,
+				D14952571F2FF35900DD74B6 /* ProgressController.swift */,
+				D1D16DE91F30A86F002F0907 /* ProgressErrorController.swift */,
+				D1D16DEB1F30B54F002F0907 /* ProgressSuccessController.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -297,12 +306,15 @@
 				D134913D1E453E280074ECFD /* EnvironmentFriendly.swift in Sources */,
 				D134913F1E453E620074ECFD /* EnvironmentInjector.swift in Sources */,
 				D1E31E801E44BDD000C04D16 /* DataFetcher.swift in Sources */,
+				D14952581F2FF35900DD74B6 /* ProgressController.swift in Sources */,
 				D134913B1E453A980074ECFD /* Environment.swift in Sources */,
 				D1984B6D1F278EAB00A7F579 /* HttpCode.swift in Sources */,
 				D1828ADD1E83F7CE00246847 /* iTunesModel.swift in Sources */,
 				D12D8DD51F2C1451009BC6B5 /* WebService.swift in Sources */,
 				D1E31E7E1E44BCD300C04D16 /* DataFactory.swift in Sources */,
+				D1D16DEA1F30A86F002F0907 /* ProgressErrorController.swift in Sources */,
 				D1B8660E1ED842EC0035E563 /* TvCoreDataSource.swift in Sources */,
+				D1D16DEC1F30B54F002F0907 /* ProgressSuccessController.swift in Sources */,
 				D1828ADF1E840CEF00246847 /* iTunesFeedReader.swift in Sources */,
 				D1C0CAE01EDD89D3006CF395 /* VideoBackgroundView.swift in Sources */,
 				D1E31E781E44BB4000C04D16 /* DataController.swift in Sources */,
