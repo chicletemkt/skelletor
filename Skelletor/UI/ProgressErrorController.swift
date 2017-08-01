@@ -11,7 +11,7 @@ import UIKit
 open class ProgressErrorController: UIViewController {
     @IBInspectable public var message: String? {
         didSet {
-            if messageLabel != nil, message != nil {
+            if messageLabel != nil {
                 messageLabel.text = message
             }
         }
