@@ -39,7 +39,7 @@ open class ProgressController: UIViewController, EnvironmentFriendly {
     public weak var env: Environment!
     
     /// Message to display to the user
-    public var message = "" {
+    public var message: String? {
         didSet {
             if messageLabel != nil {
                 messageLabel.text = message
@@ -49,7 +49,10 @@ open class ProgressController: UIViewController, EnvironmentFriendly {
     
     // MARK: - View Lifecycle
     open override func viewDidLoad() {
-        messageLabel.text = message
+        super.viewDidLoad()
+        if message != nil {
+            messageLabel.text = message
+        }
     }
     
     open override func viewDidAppear(_ animated: Bool) {
