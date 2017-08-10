@@ -29,6 +29,7 @@
 		D1E31E7E1E44BCD300C04D16 /* DataFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E31E7D1E44BCD300C04D16 /* DataFactory.swift */; };
 		D1E31E801E44BDD000C04D16 /* DataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E31E7F1E44BDD000C04D16 /* DataFetcher.swift */; };
 		D1E7FEFD1ECDDF2500EF734B /* ImageTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E7FEFC1ECDDF2500EF734B /* ImageTransformer.swift */; };
+		D1F3ED051F3B9F5800434E01 /* ProgressMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F3ED041F3B9F5800434E01 /* ProgressMessageController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		D1E31E7D1E44BCD300C04D16 /* DataFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataFactory.swift; sourceTree = "<group>"; };
 		D1E31E7F1E44BDD000C04D16 /* DataFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataFetcher.swift; sourceTree = "<group>"; };
 		D1E7FEFC1ECDDF2500EF734B /* ImageTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageTransformer.swift; sourceTree = "<group>"; };
+		D1F3ED041F3B9F5800434E01 /* ProgressMessageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressMessageController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				D14952571F2FF35900DD74B6 /* ProgressController.swift */,
 				D1D16DE91F30A86F002F0907 /* ProgressErrorController.swift */,
 				D1D16DEB1F30B54F002F0907 /* ProgressSuccessController.swift */,
+				D1F3ED041F3B9F5800434E01 /* ProgressMessageController.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 				D1D16DEC1F30B54F002F0907 /* ProgressSuccessController.swift in Sources */,
 				D1828ADF1E840CEF00246847 /* iTunesFeedReader.swift in Sources */,
 				D1C0CAE01EDD89D3006CF395 /* VideoBackgroundView.swift in Sources */,
+				D1F3ED051F3B9F5800434E01 /* ProgressMessageController.swift in Sources */,
 				D1E31E781E44BB4000C04D16 /* DataController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

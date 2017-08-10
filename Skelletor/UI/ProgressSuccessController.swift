@@ -8,23 +8,7 @@
 
 import UIKit
 
-open class ProgressSuccessController: UIViewController {
-    @IBInspectable public var message: String? {
-        didSet {
-            if messageLabel != nil, message != nil {
-                messageLabel.text = message
-            }
-        }
-    }
-    @IBOutlet public weak var messageLabel: UILabel!
-    
-    open override func viewDidLoad() {
-        super.viewDidLoad()
-        if message != nil {
-            messageLabel.text = message
-        }
-    }
-    
+open class ProgressSuccessController: ProgressMessageController {   
     @IBAction open func dismissAction(_ sender: Any) {
         navigationController?.popToRootViewController(animated: true)
     }

@@ -8,17 +8,7 @@
 
 import UIKit
 
-open class ProgressErrorController: UIViewController {
-    @IBInspectable public var message: String? {
-        didSet {
-            if messageLabel != nil {
-                messageLabel.text = message
-            }
-        }
-    }
-    
-    @IBOutlet weak var messageLabel: UILabel!
-    
+open class ProgressErrorController: ProgressMessageController {
     @IBAction open func retryAction(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }
@@ -32,13 +22,6 @@ open class ProgressErrorController: UIViewController {
             } else {
                 nav.popToRootViewController(animated: true)
             }
-        }
-    }
-    
-    open override func viewDidLoad() {
-        super.viewDidLoad()
-        if message != nil {
-            messageLabel.text = message
         }
     }
 }

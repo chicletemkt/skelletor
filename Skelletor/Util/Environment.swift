@@ -11,7 +11,7 @@ import Foundation
 /// This is a generic class which aims to organize a system's environment. An environment is a global state that is 
 /// shared throughout the software.
 public class Environment {
-    var storage : [String:Any?] = [:]
+    var storage : [String:Any] = [:]
     
     public init(){}
     
@@ -36,11 +36,7 @@ public class Environment {
     /// Subscript for subscripting data
     public subscript(index: String) -> Any? {
         get {
-            let value = storage[index]
-            guard value != nil else {
-                return nil
-            }
-            return value as Any
+            return storage[index]
         }
         set(newValue) {
             storage[index] = newValue
