@@ -17,26 +17,15 @@ public typealias ProgressCallback = ()->ProgressCallbackReturn
 
 /// Implements a general-purpose progress controller that executes something and let the user wait
 /// for the result.
-open class ProgressController: UIViewController, EnvironmentFriendly {
+open class ProgressController: UIViewController {
+    
     // MARK: - Properties
     @IBOutlet open weak var activityView: UIActivityIndicatorView!
     @IBOutlet open weak var messageLabel: UILabel!
-    
-    open var webServiceId: String {
-        return "WebService"
-    }
-    open var contextId: String {
-        return "ContextId"
-    }
-    
-    public var webService: WebService {
-        return env[webServiceId] as! WebService
-    }
-    public var context: NSManagedObjectContext {
-        return (env[contextId] as! NSPersistentContainer).viewContext
-    }
-    
-    public weak var env: Environment!
+    @IBOutlet open weak var buttonPanel: UIStackView!
+    @IBOutlet open weak var okButton: UIButton!
+    @IBOutlet open weak var retryButton: UIButton!
+    @IBOutlet open weak var cancelButton: UIButton!
     
     /// Message to display to the user
     public var message: String? {
@@ -53,6 +42,7 @@ open class ProgressController: UIViewController, EnvironmentFriendly {
         if message != nil {
             messageLabel.text = message
         }
+        buttonPanel?.isHidden = true
     }
     
     open override func viewDidAppear(_ animated: Bool) {
@@ -63,10 +53,53 @@ open class ProgressController: UIViewController, EnvironmentFriendly {
     open func execute() {
         fatalError("You must override this method")
     }
-    
-    open override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.destination is EnvironmentFriendly {
-            EnvironmentInjector(with: env).inject(into: segue.destination)
+
+    // MARK: - UI Related Methods
+    open func hideButtonPanel(_ hidden: Bool, animated: Bool) {
+        if animated {
+            if buttonPanel.isHidden && hidden {
+                // nothing to do. It is already hidden
+                return
+            }
+            let newAlpha = buttonPanel.isHidden ? 1.0 : 0.0
+            buttonPanel.alpha = buttonPanel.isHidden ? 0.0 : 1.0
+            buttonPanel.isHidden = !buttonPanel.isHidden
+            UIView.animate(withDuration: 1.5, animations: { [weak self] in
+                self!.buttonPanel.alpha = CGFloat(newAlpha)
+                }, completion: { [weak self](finished) in
+                    if finished {
+                        self!.buttonPanel.isHidden = hidden
+                    }
+            })
+            return
         }
+        buttonPanel.isHidden = hidden
+    }
+    
+    open func successButtonSet() {
+        retryButton?.isHidden = true
+        cancelButton?.isHidden = true
+        okButton?.isHidden = false
+    }
+    
+    open func failureButtonSet(_ showRetry: Bool = false) {
+        okButton?.isHidden = true
+        retryButton?.isHidden = !showRetry
+        cancelButton?.isHidden = false
+    }
+    
+    @IBAction open func okButtonAction(_ sender: UIButton) {
+        hideButtonPanel(true, animated: false)
+        navigationController?.popToRootViewController(animated: true)
+    }
+    
+    @IBAction open func retryAction(_ sender: UIButton) {
+        hideButtonPanel(true, animated: false)
+        execute()
+    }
+    
+    @IBAction open func cancelAction(_ sender: UIButton) {
+        hideButtonPanel(true, animated: false)
+        navigationController?.popViewController(animated: true)
     }
 }
