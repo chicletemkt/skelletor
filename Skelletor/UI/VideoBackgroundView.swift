@@ -22,7 +22,7 @@ public class VideoBackgroundView: UIView {
     
     var videoLayer: AVPlayerLayer {
         let vlayer = layer as! AVPlayerLayer
-        vlayer.videoGravity = AVLayerVideoGravityResizeAspectFill
+        vlayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
         return vlayer
     }
 
