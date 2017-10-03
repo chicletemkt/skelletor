@@ -127,6 +127,7 @@ open class FeedViewController: UITableViewController {
         }
     }
     
+    @objc
     func valueChanged(sender: Any?) {
         if let control = sender as? UIRefreshControl {
             if control.isRefreshing {
