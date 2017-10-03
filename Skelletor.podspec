@@ -32,7 +32,6 @@ are designed so you don't have to rewrite it all over and over again.
                    DESC
 
   s.homepage     = "https://github.com/nineteen-apps/skelletor"
-  # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
   # ―――  Spec License  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -69,7 +68,7 @@ are designed so you don't have to rewrite it all over and over again.
 
   # s.platform     = :ios
   s.platform     = :ios, "11.0"
-
+  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '4.0' }
   #  When using multiple platforms
   # s.ios.deployment_target = "5.0"
   # s.osx.deployment_target = "10.7"
