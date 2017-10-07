@@ -121,7 +121,7 @@ are designed so you don't have to rewrite it all over and over again.
 
   # s.framework  = "SomeFramework"
   # s.frameworks = "SomeFramework", "AnotherFramework"
-
+  s.frameworks = "UIKit", "Foundation", "CoreData", "MediaPlayer"
   # s.library   = "iconv"
   # s.libraries = "iconv", "xml2"
 
