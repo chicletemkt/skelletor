@@ -8,3 +8,10 @@ forth.
 This project does not intent to create another layer of software upon Apple's
 frameworks, but to provide boiler-plate code so you don't have to worry about it.
 
+## Important
+
+Sometimes improvements offered by Apple may let some Skelletor classes to become
+obsolete. Every time an API become so easy to use, a Skelletor class may become
+obsolete. When it happens, the class will be marked as obsolete and will disappear on
+future library releases.
+
