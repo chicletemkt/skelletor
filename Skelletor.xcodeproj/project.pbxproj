@@ -59,6 +59,7 @@
 		D1828ADC1E83F7CE00246847 /* iTunesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iTunesModel.swift; sourceTree = "<group>"; };
 		D1828ADE1E840CEF00246847 /* iTunesFeedReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iTunesFeedReader.swift; sourceTree = "<group>"; };
 		D1984B6C1F278EAB00A7F579 /* HttpCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpCode.swift; sourceTree = "<group>"; };
+		D1B62BD61F89101D00F0707F /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D1B81DAB1E460F660020B476 /* BundleVersion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BundleVersion.swift; sourceTree = "<group>"; };
 		D1B8660D1ED842EC0035E563 /* TvCoreDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TvCoreDataSource.swift; sourceTree = "<group>"; };
 		D1BC73D31F89033D0023F846 /* Skelletor.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; fileEncoding = 4; path = Skelletor.podspec; sourceTree = SOURCE_ROOT; };
@@ -125,6 +126,8 @@
 		D16DA7191E44B9ED004219DC = {
 			isa = PBXGroup;
 			children = (
+				D1B62BD61F89101D00F0707F /* README.md */,
+				D1BC73D31F89033D0023F846 /* Skelletor.podspec */,
 				D16DA7251E44B9ED004219DC /* Skelletor */,
 				D16DA7301E44B9EE004219DC /* SkelletorTests */,
 				D16DA7241E44B9ED004219DC /* Products */,
@@ -148,7 +151,6 @@
 				D116A4E41E8357420063FF18 /* UI */,
 				D13491391E453A870074ECFD /* Util */,
 				D1E31E761E44BB1A00C04D16 /* Data */,
-				D1BC73D31F89033D0023F846 /* Skelletor.podspec */,
 				D16DA7261E44B9ED004219DC /* Skelletor.h */,
 				D16DA7271E44B9ED004219DC /* Info.plist */,
 			);
