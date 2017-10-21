@@ -17,5 +17,5 @@ are designed so you don't have to rewrite it all over and over again.
   s.source       = { :git => "https://github.com/nineteen-apps/skelletor.git", :tag => "#{s.version}" }
   s.source_files  = "Classes", "Skelletor/**/*.{swift}"
   s.exclude_files = "Classes/Exclude"
-  s.ios.frameworks = "UIKit", "Foundation", "CoreData", "MediaPlayer"
+  s.ios.frameworks = "UIKit", "Foundation", "AVFoundation", "CoreData", "MediaPlayer"
 end
