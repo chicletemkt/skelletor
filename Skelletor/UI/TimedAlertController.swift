@@ -18,13 +18,13 @@ open class TimedAlertController: UIAlertController {
     fileprivate var timer: Timer?
     
     /// Timeout given in ms. Defaults to 125ms
-    public var timeOut: TimeInterval = 0.125
+    public var timeout: TimeInterval = 0.125
     
     /// Tells if automatic dismissal is animated or not. Defaults to true.
     public var animatedDismissal: Bool = true
 
     open override func viewDidAppear(_ animated: Bool) {
-        timer = Timer.scheduledTimer(withTimeInterval: timeOut, repeats: false, block: { [unowned self](timer) in
+        timer = Timer.scheduledTimer(withTimeInterval: timeout, repeats: false, block: { [unowned self](timer) in
             timer.invalidate()
             self.dismiss(animated: self.animatedDismissal, completion: nil)
         })
