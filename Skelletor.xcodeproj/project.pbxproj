@@ -12,6 +12,7 @@
 		D134913D1E453E280074ECFD /* EnvironmentFriendly.swift in Sources */ = {isa = PBXBuildFile; fileRef = D134913C1E453E280074ECFD /* EnvironmentFriendly.swift */; };
 		D134913F1E453E620074ECFD /* EnvironmentInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = D134913E1E453E620074ECFD /* EnvironmentInjector.swift */; };
 		D14952581F2FF35900DD74B6 /* ProgressController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14952571F2FF35900DD74B6 /* ProgressController.swift */; };
+		D169B37A1FA297A300C462B4 /* TimedAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D169B3791FA297A300C462B4 /* TimedAlertController.swift */; };
 		D16DA72D1E44B9EE004219DC /* Skelletor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D16DA7231E44B9ED004219DC /* Skelletor.framework */; };
 		D16DA7321E44B9EE004219DC /* SkelletorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16DA7311E44B9EE004219DC /* SkelletorTests.swift */; };
 		D16DA7341E44B9EE004219DC /* Skelletor.h in Headers */ = {isa = PBXBuildFile; fileRef = D16DA7261E44B9ED004219DC /* Skelletor.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -50,6 +51,7 @@
 		D134913C1E453E280074ECFD /* EnvironmentFriendly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnvironmentFriendly.swift; sourceTree = "<group>"; };
 		D134913E1E453E620074ECFD /* EnvironmentInjector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnvironmentInjector.swift; sourceTree = "<group>"; };
 		D14952571F2FF35900DD74B6 /* ProgressController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressController.swift; sourceTree = "<group>"; };
+		D169B3791FA297A300C462B4 /* TimedAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimedAlertController.swift; sourceTree = "<group>"; };
 		D16DA7231E44B9ED004219DC /* Skelletor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Skelletor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D16DA7261E44B9ED004219DC /* Skelletor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Skelletor.h; sourceTree = "<group>"; };
 		D16DA7271E44B9ED004219DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				D1D16DE91F30A86F002F0907 /* ProgressErrorController.swift */,
 				D1D16DEB1F30B54F002F0907 /* ProgressSuccessController.swift */,
 				D1F3ED041F3B9F5800434E01 /* ProgressMessageController.swift */,
+				D169B3791FA297A300C462B4 /* TimedAlertController.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 				D1E31E7E1E44BCD300C04D16 /* DataFactory.swift in Sources */,
 				D1D16DEA1F30A86F002F0907 /* ProgressErrorController.swift in Sources */,
 				D1B8660E1ED842EC0035E563 /* TvCoreDataSource.swift in Sources */,
+				D169B37A1FA297A300C462B4 /* TimedAlertController.swift in Sources */,
 				D1D16DEC1F30B54F002F0907 /* ProgressSuccessController.swift in Sources */,
 				D1828ADF1E840CEF00246847 /* iTunesFeedReader.swift in Sources */,
 				D1C0CAE01EDD89D3006CF395 /* VideoBackgroundView.swift in Sources */,
