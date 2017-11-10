@@ -1,7 +1,7 @@
 # coding: utf-8
 Pod::Spec.new do |s|
   s.name         = "Skelletor"
-  s.version      = "1.0.2"
+  s.version      = "1.0.3"
   s.summary      = "A set of small routines to speed-up development."
   s.description  = <<-DESC
 Skelletor is a set of classes that implements several boiler plate code used
