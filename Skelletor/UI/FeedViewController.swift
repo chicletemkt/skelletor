@@ -8,6 +8,7 @@
 
 import UIKit
 
+@available(iOSApplicationExtension, unavailable)
 open class FeedViewController: UITableViewController {
     @IBInspectable public var cellId: String! = "FeedCell"
     @IBInspectable public var feedPath: String!
