@@ -45,7 +45,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		D116A4E51E83575D0063FF18 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		D12D8DD41F2C1451009BC6B5 /* WebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		D134913A1E453A980074ECFD /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		D134913C1E453E280074ECFD /* EnvironmentFriendly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnvironmentFriendly.swift; sourceTree = "<group>"; };
@@ -103,7 +102,6 @@
 		D116A4E41E8357420063FF18 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				D116A4E51E83575D0063FF18 /* FeedViewController.swift */,
 				D1B8660D1ED842EC0035E563 /* TvCoreDataSource.swift */,
 				D1C0CADF1EDD89D3006CF395 /* VideoBackgroundView.swift */,
 				D14952571F2FF35900DD74B6 /* ProgressController.swift */,
