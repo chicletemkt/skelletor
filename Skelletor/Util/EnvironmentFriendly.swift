@@ -9,5 +9,5 @@
 import Foundation
 
 public protocol EnvironmentFriendly {
-    weak var env : Environment! {get set}
+    var env : Environment! {get set}
 }
