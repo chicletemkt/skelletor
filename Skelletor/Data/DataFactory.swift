@@ -23,7 +23,7 @@ public struct DataFactory<DataType: NSManagedObject> {
         var instance: DataType!
         context.performAndWait {
             // Ensures that the operation will happen on the same context's run loop to avoid concurrency problems.
-            instance = NSEntityDescription.insertNewObject(forEntityName: String(describing: DataType.self), into: self.context) as! DataType
+            instance = NSEntityDescription.insertNewObject(forEntityName: String(describing: DataType.self), into: self.context) as? DataType
         }
         return instance
     }
